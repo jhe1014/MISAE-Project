@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_search"
+        android:title="search"
+        android:icon="@drawable/baseline_search_black_24"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/menu_renew"
+        android:title="renew"
+        android:icon="@drawable/baseline_autorenew_black_24"
+        app:showAsAction="always"
+        />
+</menu>
