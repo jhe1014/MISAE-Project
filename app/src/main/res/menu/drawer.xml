@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu01"
+            android:checked="true"
+            android:title="게시판/공유(??)"/>
+        <item
+            android:id="@+id/menu02"
+            android:title="식약처 마스크 확인"/>
+        <item
+            android:id="@+id/menu03"
+            android:title="설정"/>
+    </group>
+</menu>

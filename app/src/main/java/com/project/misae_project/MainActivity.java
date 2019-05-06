@@ -1,7 +1,10 @@
 package com.project.misae_project;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +25,44 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.home_navigation_view);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 툴바 왼쪽 메뉴 버튼 사용
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_dehaze_black_24);
         setTitle("");
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                menuItem.setCheckable(true);
+                drawerLayout.closeDrawers();
+
+                int id = menuItem.getItemId();
+                Intent intent;
+
+                switch (id) {
+                    case R.id.menu01 : // 게시판/공유(??)
+                        Toast.makeText(getApplicationContext(), "1번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //intent = new Intent(getApplicationContext(), );
+                        //startActivity(intent);
+                        break;
+
+                    case R.id.menu02 : // 식약처 마스크 확인
+                        Toast.makeText(getApplicationContext(), "2번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //intent = new Intent(getApplicationContext(), );
+                        //startActivity(intent);
+                        break;
+
+                    case R.id.menu03 : // 설정
+                        Toast.makeText(getApplicationContext(), "3번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //intent = new Intent(getApplicationContext(), );
+                        //startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -41,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case android.R.id.home : // 메뉴 버튼
-                Toast.makeText(getApplicationContext(), "메뉴 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
-                //drawerLayout.openDrawer(GravityCompat.START); // 사이드메뉴 뜨도록 하기
+                //Toast.makeText(getApplicationContext(), "메뉴 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+                drawerLayout.openDrawer(GravityCompat.START); // 사이드메뉴 뜨도록 하기
                 return true;
 
             case R.id.menu_search :  // 검색 버튼
