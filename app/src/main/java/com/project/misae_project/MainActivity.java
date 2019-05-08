@@ -44,20 +44,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.menu01 : // 게시판/공유(??)
                         Toast.makeText(getApplicationContext(), "1번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
-                        //intent = new Intent(getApplicationContext(), );
-                        //startActivity(intent);
+                        intent = new Intent(getApplicationContext(), SharingActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.menu02 : // 식약처 마스크 확인
                         Toast.makeText(getApplicationContext(), "2번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
-                        //intent = new Intent(getApplicationContext(), );
-                        //startActivity(intent);
+                        intent = new Intent(getApplicationContext(), MaskActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.menu03 : // 설정
                         Toast.makeText(getApplicationContext(), "3번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
-                        //intent = new Intent(getApplicationContext(), );
-                        //startActivity(intent);
+                        intent = new Intent(getApplicationContext(), SettingActivity.class);
+                        startActivity(intent);
                         break;
                 }
                 return true;
