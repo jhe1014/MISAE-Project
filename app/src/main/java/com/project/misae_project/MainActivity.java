@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // 클릭된 메뉴 아이템의 아이디로 동작 구분
         int id = item.getItemId();
+        Intent intent;
 
         switch (id) {
             case android.R.id.home : // 메뉴 버튼
@@ -87,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "검색 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
                 return true;
 
-            case R.id.menu_renew : // 새로고침 버튼
-                Toast.makeText(getApplicationContext(), "새로고침 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+            case R.id.menu_renew : // 지도 버튼
+                Toast.makeText(getApplicationContext(), "지도 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
