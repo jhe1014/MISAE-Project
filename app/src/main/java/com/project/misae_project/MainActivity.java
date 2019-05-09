@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_renew : // 지도 버튼
-                Toast.makeText(getApplicationContext(), "지도 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "지도 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+                intent = new Intent(getApplicationContext(), MapActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
