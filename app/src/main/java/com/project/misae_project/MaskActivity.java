@@ -1,9 +1,16 @@
 package com.project.misae_project;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MaskActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -20,6 +27,26 @@ public class MaskActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_black_24);
         setTitle("마스크 검색");
     }
+
+    /*protected void onResume(){
+        super.onResume();
+
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(ScannerActivity.class);
+        integrator.initiateScan();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Log.d("onActivityResult", "onActivityResult: .");
+        if (resultCode == Activity.RESULT_OK) {
+            IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+            String re = scanResult.getContents();
+            String message = re;
+            Log.d("onActivityResult", "onActivityResult: ." + re);
+            Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+        }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { // 툴바 뒤로가기 버튼
