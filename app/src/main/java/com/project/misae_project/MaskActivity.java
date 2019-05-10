@@ -28,7 +28,7 @@ public class MaskActivity extends AppCompatActivity {
         setTitle("마스크 검색");
     }
 
-    /*protected void onResume(){
+    protected void onResume(){
         super.onResume();
 
         IntentIntegrator integrator = new IntentIntegrator(this);
@@ -46,7 +46,7 @@ public class MaskActivity extends AppCompatActivity {
             Log.d("onActivityResult", "onActivityResult: ." + re);
             Toast.makeText(this, re, Toast.LENGTH_LONG).show();
         }
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { // 툴바 뒤로가기 버튼
