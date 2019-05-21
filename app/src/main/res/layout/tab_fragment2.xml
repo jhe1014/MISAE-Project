@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TabFragment2">
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="날씨 페이지" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:src="@drawable/baseline_location_on_black_24"
+                android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:id="@+id/weather_location"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="25dp"
+                android:text="현재 위치" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/time_now2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="yyyy-mm-dd 00:00 AM"
+            android:textSize="18dp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/sun"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/weather_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상태"
+            android:textSize="30dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/weather_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="comment"
+            android:textSize="18dp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/max_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:text="최고 기온"
+                android:layout_marginRight="15dp"/>
+
+            <TextView
+                android:id="@+id/min_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:text="최저 기온" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시간별 예보"
+            android:textSize="15dp"
+            android:background="#9DDAE2"
+            android:layout_marginTop="5dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/weather_time_listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="요일별 예보"
+            android:textSize="15dp"
+            android:background="#9DDAE2"
+            android:layout_marginTop="10dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/weather_date_listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />-->
+    </LinearLayout>
+
+</ScrollView>
