@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/air_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="요일 시간"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/air_date_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src ="@drawable/baseline_tag_faces_black_48"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/air_date_con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상태"
+        android:layout_gravity="center" />
+</LinearLayout>
