@@ -20,6 +20,10 @@ public class TabFragment1 extends Fragment {
 
     private RecyclerView air_con_HorizontalView;
     private AirConAdapter air_con_Adapter;
+
+    private RecyclerView air_time_HorizontalView;
+    private AirTimeAdapter air_time_Adapter;
+
     private LinearLayoutManager mLayoutManager;
 
     @Override
@@ -27,33 +31,58 @@ public class TabFragment1 extends Fragment {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
 
         // 대기 성분들 상태 목록 (가로 RecyclerView)
-        View view = inflater.inflate(R.layout.air_condition_item, container, false);
-        Context context = view.getContext();
+        View view1 = inflater.inflate(R.layout.air_condition_item, container, false);
+        Context context1 = view1.getContext();
         air_con_HorizontalView = (RecyclerView) rootview.findViewById(R.id.air_condition_listview);
 
-        mLayoutManager = new LinearLayoutManager(context);
+        mLayoutManager = new LinearLayoutManager(context1);
         mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 가로 배치
 
         air_con_HorizontalView.setLayoutManager(mLayoutManager);
-
         air_con_Adapter = new AirConAdapter();
 
-        ArrayList<AirListData> data = new ArrayList<>();
+        // 시간별 미세먼지 상태 (가로 RecyclerView)
+        View view2 = inflater.inflate(R.layout.air_time_item, container, false);
+        Context context2 = view2.getContext();
+        air_time_HorizontalView = (RecyclerView) rootview.findViewById(R.id.air_time_listview);
+
+        mLayoutManager = new LinearLayoutManager(context2);
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // 가로 배치
+
+        air_time_HorizontalView.setLayoutManager(mLayoutManager);
+        air_time_Adapter = new AirTimeAdapter();
+
+        // 대기 성분 상태 데이터 삽입부
+        ArrayList<AirListData> data1 = new ArrayList<>();
 
         int i = 0;
         while (i < 10) {
-            data.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", "수치"));
+            data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", "수치"));
             i++;
         }
 
-        air_con_Adapter.setData(data);
+        air_con_Adapter.setData(data1);
 
         air_con_HorizontalView.setAdapter(air_con_Adapter);
+
+        // 시간별 미세먼지 상태 데이터 삽입부
+        ArrayList<AirTimeData> data2 = new ArrayList<>();
+
+        int j = 0;
+        while (j < 10) {
+            data2.add(new AirTimeData("시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+            j++;
+        }
+
+        air_time_Adapter.setData(data2);
+
+        air_time_HorizontalView.setAdapter(air_time_Adapter);
 
         return rootview;
     }
 }
 
+// 대기 성분 상태 목록에서 사용하는 부분 (여기서부터)
 class AirConAdapter extends RecyclerView.Adapter<AirConViewHolder> {
 
     private ArrayList<AirListData> AirConDatas;
@@ -130,3 +159,74 @@ class AirListData {
         return this.value;
     }
 }
+// 대기 성분 상태 목록에서 사용하는 부분 (여기까지)
+
+// 시간별 미세먼지 상태 목록에서 사용하는 부분 (여기서부터)
+class AirTimeAdapter extends RecyclerView.Adapter<AirTimeViewHolder> {
+
+    private ArrayList<AirTimeData> AirTimeDatas;
+
+    public void setData(ArrayList<AirTimeData> list) {
+        AirTimeDatas = list;
+    }
+
+    public AirTimeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // 사용할 아이템의 뷰 생성
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.air_time_item, parent, false);
+
+        AirTimeViewHolder holder = new AirTimeViewHolder(view);
+
+        return holder;
+    }
+
+    public void onBindViewHolder(AirTimeViewHolder holder, int position) {
+        AirTimeData data = AirTimeDatas.get(position);
+
+        holder.time.setText(data.getTime());
+        holder.icon.setImageResource(data.getImg());
+        holder.condition.setText(data.getCondition());
+    }
+
+    public int getItemCount() {
+        return AirTimeDatas.size();
+    }
+}
+
+class AirTimeViewHolder extends RecyclerView.ViewHolder {
+    public TextView time;
+    public ImageView icon;
+    public TextView condition;
+
+    public AirTimeViewHolder(View itemView) {
+        super(itemView);
+
+        time = (TextView) itemView.findViewById(R.id.air_time);
+        icon = (ImageView) itemView.findViewById(R.id.air_time_icon);
+        condition = (TextView) itemView.findViewById(R.id.air_time_con);
+    }
+}
+
+class AirTimeData {
+    private String time;
+    private int img;
+    private String condition;
+
+    public AirTimeData(String time, int img, String condition) {
+        this.time = time;
+        this.img = img;
+        this.condition = condition;
+    }
+
+    public String getTime() {
+        return this.time;
+    }
+
+    public int getImg() {
+        return this.img;
+    }
+
+    public String getCondition() {
+        return this.condition;
+    }
+}
+// 시간별 미세먼지 상태 목록에서 사용하는 부분 (여기까지)
