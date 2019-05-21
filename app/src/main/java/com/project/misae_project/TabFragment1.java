@@ -19,13 +19,14 @@ import java.util.ArrayList;
 public class TabFragment1 extends Fragment {
 
     private RecyclerView air_con_HorizontalView;
-    private HorizontalAdapter air_con_Adapter;
+    private AirConAdapter air_con_Adapter;
     private LinearLayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
 
+        // 대기 성분들 상태 목록 (가로 RecyclerView)
         View view = inflater.inflate(R.layout.air_condition_item, container, false);
         Context context = view.getContext();
         air_con_HorizontalView = (RecyclerView) rootview.findViewById(R.id.air_condition_listview);
@@ -35,7 +36,7 @@ public class TabFragment1 extends Fragment {
 
         air_con_HorizontalView.setLayoutManager(mLayoutManager);
 
-        air_con_Adapter = new HorizontalAdapter();
+        air_con_Adapter = new AirConAdapter();
 
         ArrayList<AirListData> data = new ArrayList<>();
 
@@ -53,25 +54,25 @@ public class TabFragment1 extends Fragment {
     }
 }
 
-class HorizontalAdapter extends RecyclerView.Adapter<HorizontalViewHolder> {
+class AirConAdapter extends RecyclerView.Adapter<AirConViewHolder> {
 
-    private ArrayList<AirListData> horizontalDatas;
+    private ArrayList<AirListData> AirConDatas;
 
     public void setData(ArrayList<AirListData> list) {
-        horizontalDatas = list;
+        AirConDatas = list;
     }
 
-    public HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AirConViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 사용할 아이템의 뷰 생성
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.air_condition_item, parent, false);
 
-        HorizontalViewHolder holder = new HorizontalViewHolder(view);
+        AirConViewHolder holder = new AirConViewHolder(view);
 
         return holder;
     }
 
-    public void onBindViewHolder(HorizontalViewHolder holder, int position) {
-        AirListData data = horizontalDatas.get(position);
+    public void onBindViewHolder(AirConViewHolder holder, int position) {
+        AirListData data = AirConDatas.get(position);
 
         holder.name.setText(data.getName());
         holder.icon.setImageResource(data.getImg());
@@ -80,17 +81,17 @@ class HorizontalAdapter extends RecyclerView.Adapter<HorizontalViewHolder> {
     }
 
     public int getItemCount() {
-        return horizontalDatas.size();
+        return AirConDatas.size();
     }
 }
 
-class HorizontalViewHolder extends RecyclerView.ViewHolder {
+class AirConViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
     public ImageView icon;
     public TextView condition;
     public TextView value;
 
-    public HorizontalViewHolder(View itemView) {
+    public AirConViewHolder(View itemView) {
         super(itemView);
 
         name = (TextView) itemView.findViewById(R.id.air_con_name);
