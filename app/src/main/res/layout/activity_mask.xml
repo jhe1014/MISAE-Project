@@ -9,6 +9,59 @@
     <include
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        />
+
+    <Button
+        android:id="@+id/mask_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="683dp"
+        android:background="@color/zxing_custom_possible_result_points"
+        android:onClick="OpenCamera"
+        android:text="촬영 버튼"
+        android:textColor="@color/cardview_light_background"
+        tools:ignore="OnClick"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/mask_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="검색"
+        android:layout_below="@+id/toolbar"
+        android:layout_toLeftOf="@+id/mask_button"
+        />
+
+    <EditText
+        android:id="@+id/mask_Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_toLeftOf="@id/mask_search_button"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/mask_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mask_Edit"
+        android:text="목록"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/zxing_custom_possible_result_points"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"/>
+    />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mask_textView"/>
 
 </RelativeLayout>
