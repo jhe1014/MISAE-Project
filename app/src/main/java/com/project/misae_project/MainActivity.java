@@ -10,15 +10,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ViewPager mViewPager;
+
+    // 미세먼지 수치 테스트용 변수
+    public static String stationName = "백석동";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,36 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.home_navigation_view);
         mViewPager = (ViewPager) findViewById(R.id.container);
+
+        // 미세먼지 수치 openAPI 에 직접 연결하는 방식
+        // 추후 데이터베이스에서 받아오는 걸로 변경
+        // 파싱된 데이터 log.d tag: 미세먼지 수치
+        try {
+
+            String resultText = new LiveAtmosphere().execute().get();
+            new LiveAtmosphere().listjsonParser(resultText);
+            new LiveAtmosphere().setLA();
+            //Log.d("미세먼지 통데이터",resultText);
+
+
+            //    public static String[] arraysum;
+/*
+            arraysum[0] = date;
+            arraysum[1] = pm10;
+            arraysum[2] = pm25;
+            arraysum[3] = co;
+            arraysum[4] = no2;
+            arraysum[5] = so2;
+            arraysum[6] = o3;
+            arraysum[7] = mang;
+*/
+
+
+        } catch (InterruptedException e) {
+        e.printStackTrace();
+        } catch (ExecutionException e) {
+        e.printStackTrace();
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 툴바 왼쪽 메뉴 버튼 사용
