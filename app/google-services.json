@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "80168835443",
+    "firebase_url": "https://misae-25f3e.firebaseio.com",
+    "project_id": "misae-25f3e",
+    "storage_bucket": "misae-25f3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80168835443:android:9bdf322a19543f83",
+        "android_client_info": {
+          "package_name": "com.project.misae_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80168835443-ibnajdtb2i2f18ese7midekthafqanli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHLov3l6rJ7ZmlkfIQ0eR26fVL14PFtGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80168835443-ibnajdtb2i2f18ese7midekthafqanli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
