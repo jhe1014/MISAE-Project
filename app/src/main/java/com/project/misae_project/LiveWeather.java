@@ -124,6 +124,11 @@ public class LiveWeather extends AsyncTask<String, String, String> {
 
 
 
+        Log.d("날씨", "측정소명 : " + stationName + "\n" +
+                        "date : " + date + "\n" +
+                        "time : " + time + "\n" +
+                        "temperature : " + t1h + "\n");
+
 //        MainActivity.textView4.setText(
 //
 //                "측정소명 : " + stationName + "\n" +
