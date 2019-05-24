@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SharingActivity">
+    tools:context=".SharingActivity"
+    android:orientation="vertical"
+    >
 
     <include
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_user"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="작성자" />
+
+        <Button
+            android:id="@+id/b_GPS"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="c_GPS"
+            android:text="현 위치 입력" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"></Spinner>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"></Spinner>
+    </LinearLayout>
+    <!---->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_pm10"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="pm10" />
+
+        <EditText
+            android:id="@+id/et_pm2.5"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="pm2.5" />
+    </LinearLayout>
+    <!---->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/b_save"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:onClick="c_save"
+            android:text="저장" />
+    </LinearLayout>
+
+</LinearLayout>
