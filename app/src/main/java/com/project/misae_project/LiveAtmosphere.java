@@ -44,7 +44,8 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
         String serviceKey = "oBOYn4oygtbvPGCZWEQu6Sysiao90s3i%2B%2BCUaxguAZ5Pb1tOHI3uuXTH8gKZOd%2FbMXMRm5%2FxVy8Muac3ToEiXA%3D%3D";
 
         try {
-            url = new URL("http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName="+stationName+"&dataTerm=month&pageNo=1&numOfRows=1&ServiceKey="+serviceKey+"&ver=1.3&_returnType=json");
+            url = new URL("http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName="
+                    +stationName+"&dataTerm=month&pageNo=1&numOfRows=1&ServiceKey="+serviceKey+"&ver=1.3&_returnType=json");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -131,7 +132,7 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
 
 
         Log.d("미세먼지 수치\n",
-                  "\n측정소명 :" + stationName + "\n" +
+                "\n측정소명 :" + stationName + "\n" +
                         "date : " + date + "\n" +
                         "pm10 : " + pm10 + "\n" +
                         "pm2.5 : " + pm25 + "\n" +

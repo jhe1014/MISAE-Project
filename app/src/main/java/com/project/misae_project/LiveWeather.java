@@ -17,10 +17,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import static com.project.misae_project.MainActivity.stationName;
-
+import static com.project.misae_project.MainActivity.xLoc;
+import static com.project.misae_project.MainActivity.yLoc;
 
 
 public class LiveWeather extends AsyncTask<String, String, String> {
@@ -41,8 +44,15 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         URL url = null;
         String serviceKey = "oBOYn4oygtbvPGCZWEQu6Sysiao90s3i%2B%2BCUaxguAZ5Pb1tOHI3uuXTH8gKZOd%2FbMXMRm5%2FxVy8Muac3ToEiXA%3D%3D";
 
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String getTime = sdf.format(date);
+
         try {
-            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+"&base_date=20190510&base_time=0600&nx=62&ny=111&pageNo=1&numOfRows=4&_type=json");
+            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+
+                    "&base_date=20190524&base_time=0600&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
