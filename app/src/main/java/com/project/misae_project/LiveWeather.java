@@ -50,9 +50,15 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String getTime = sdf.format(date);
 
+        Log.d("날씨 일자", getTime);
+
+
+        Log.d("gps 격자전달확인", xLoc+"\n"+ yLoc);
         try {
-            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+
-                    "&base_date=20190524&base_time=0600&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
+            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time=0600&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
+
+         Log.d("날씨 url",url.toString());
+
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -65,7 +71,7 @@ public class LiveWeather extends AsyncTask<String, String, String> {
                     buffer.append(str);
                 }
                 receiveMsg = buffer.toString();
-                Log.i("receiveMsg : ", receiveMsg);
+                Log.d("날씨 통데이터 : ", receiveMsg);
 
                 reader.close();
             } else {
@@ -86,17 +92,58 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         String  t1h = null;
         String  time = null;
 
-
         arrayWeather = new String[3];
-        try {
-            JSONArray jarray = new JSONObject(jsonString).getJSONArray("item");
-            for (int i = 0; i < jarray.length(); i++) {
-                JSONObject jObject = jarray.getJSONObject(i);
+        try{
+
+
+
+            // JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
+            JSONObject jsonObj = new JSONObject(jsonString);
+            // JSONObject에서 PersonsArray를 get하여 JSONArray에 저장한다.
+
+            JSONObject weatherinitObj = (JSONObject) jsonObj.get("response");
+            JSONObject weatherbodyObj = (JSONObject) weatherinitObj.get("body");
+            JSONObject weatheritemsObj = (JSONObject) weatherbodyObj.get("items");
+
+            JSONArray  weatherArray = (JSONArray) weatheritemsObj.get("item");
+
+            for (int i = 0; i < weatherArray.length(); i++) {
+                JSONObject temperObject = (JSONObject) weatherArray.get(i);
+
+                if (i == 3) {
+                    date = temperObject.optString("baseDate");
+                    time = temperObject.optString("baseTime");
+                    t1h =  temperObject.optString("obsrValue");
+
+
+                    arrayWeather[0] = date;
+                    arrayWeather[1] = time;
+                    arrayWeather[2] = t1h;
+
+                    Log.d("날씨","날짜" + arrayWeather[0] +
+                                           "발표시각" + arrayWeather[1] +
+                                           "온도" + arrayWeather[2]);
+
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+     /*   try {
+            JSONArray jarrayW = new JSONObject(jsonString).getJSONArray("item");
+            for (int j = 0; j < jarrayW.length(); j++){
+                Log.d("test", "아곳 작동함");
+            }
+            for (int i = 0; i < jarrayW.length(); i++) {
+                JSONObject jObject = jarrayW.getJSONObject(i);
 
                 if (i == 3) {
                     date = jObject.optString("baseDate");
                     time = jObject.optString("baseTime");
-                    t1h = jObject.optString("obsrValue");
+                    t1h =  jObject.optString("obsrValue");
 
 
                     arrayWeather[0] = date;
@@ -106,13 +153,11 @@ public class LiveWeather extends AsyncTask<String, String, String> {
                     Log.d("t1h",arrayWeather[2]);
 
                 }
-
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
 
-        }
+        }*/
         return arrayWeather;
     }
 
@@ -122,12 +167,9 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         time = LiveWeather.arrayWeather[1];
         t1h = LiveWeather.arrayWeather[2];
 
-
-
-        Log.d("날씨", "측정소명 : " + stationName + "\n" +
-                        "date : " + date + "\n" +
-                        "time : " + time + "\n" +
-                        "temperature : " + t1h + "\n");
+        Log.d("날씨","날짜" + arrayWeather[0] +
+                "발표시각" + arrayWeather[1] +
+                "온도" + arrayWeather[2]);
 
 //        MainActivity.textView4.setText(
 //

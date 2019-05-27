@@ -48,12 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static int TO_GRID = 0;
     public static int TO_GPS = 1;
-    public static double latitude   ;
-    public static double longitude  ;
-    public static double xLoc ;
-    public static double yLoc ;
 
-
+    // 격자 좌표 값
+    public static int xLoc ;
+    public static int yLoc ;
 
     // 미세먼지 수치 테스트용 변수
     public static String stationName = "백석동";
@@ -89,17 +87,17 @@ public class MainActivity extends AppCompatActivity {
         double longitude = gpsTracker.getLongitude();
 
         String address = getCurrentAddress(latitude, longitude);
-        Log.d("주소",  address);
+        Log.d("gps 주소",  address);
         //textview_address.setText(address);
 
         Toast.makeText(MainActivity.this, "현재위치 \n위도 "
                 + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
-        Log.d("위경도", "현재위치 \n위도 "
+        Log.d("gps 위경도", "현재위치 \n위도 "
                 + latitude + "\n경도 " + longitude);
         LatXLngY laXlnY = convertGRID_GPS(TO_GRID, latitude, longitude);
-        xLoc = laXlnY.x;
-        yLoc = laXlnY.y;
-        Log.d("격자좌표","x 좌표"+ laXlnY.x + "y 좌표" + laXlnY.y);
+        xLoc = laXlnY.xInt;
+        yLoc = laXlnY.yInt;
+        Log.d("gps 격자좌표","x 좌표"+ laXlnY.x + "y 좌표" + laXlnY.y);
 
 
         // 미세먼지 수치 openAPI 에 직접 연결하는 방식
@@ -125,17 +123,36 @@ public class MainActivity extends AppCompatActivity {
             arraysum[7] = mang;
 */
 
-
-
-
-
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
+        try {
+
+            String resultTextW = new LiveWeather().execute().get();
+            Log.d("날씨 메인통데이터",resultTextW);
+
+            new LiveWeather().listjsonParserWeather(resultTextW);
+            new LiveWeather().setLW();
+
+
+            //    public static String[] arrayWeahter;
+/*
+
+        date = LiveWeather.arrayWeather[0];
+        time = LiveWeather.arrayWeather[1];
+        t1h = LiveWeather.arrayWeather[2];
+
+
+*/
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -467,6 +484,8 @@ public class MainActivity extends AppCompatActivity {
             theta *= sn;
             rs.x = Math.floor(ra * Math.sin(theta) + XO + 0.5);
             rs.y = Math.floor(ro - ra * Math.cos(theta) + YO + 0.5);
+            rs.xInt = (int) rs.x;
+            rs.yInt = (int) rs.y;
         }
         else {
             rs.x = lat_X;
@@ -509,6 +528,11 @@ public class MainActivity extends AppCompatActivity {
 
         public double x;
         public double y;
+
+        public int xInt;
+        public int yInt;
+
+
 
     }
 

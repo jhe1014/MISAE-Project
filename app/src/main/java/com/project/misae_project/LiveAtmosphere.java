@@ -58,11 +58,10 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
                     buffer.append(str);
                 }
                 receiveMsg = buffer.toString();
-                //Log.i("receiveMsg : ", receiveMsg);
 
                 reader.close();
             } else {
-                Log.i("통신 결과", conn.getResponseCode() + "에러");
+                Log.d("통신 결과", conn.getResponseCode() + "에러");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -140,15 +139,7 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
                 "so2 : " + so2 + "\n" +
                 "o3 : " + o3 + "\n");
 
-        Log.d("미세먼지 수치",
-                "\n측정소명 :" + stationName + "\n" +
-                        "date : " + date + "\n" +
-                        "pm10 : " + pm10 + "\n" +
-                        "pm2.5 : " + pm25 + "\n" +
-                        "co : " + co + "\n" +
-                        "no2 : " + no2 + "\n" +
-                        "so2 : " + so2 + "\n" +
-                        "o3 : " + o3 + "\n");
+
 
 
 
