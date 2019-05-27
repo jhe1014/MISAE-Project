@@ -100,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("gps 격자좌표","x 좌표"+ laXlnY.x + "y 좌표" + laXlnY.y);
 
 
+        // 위경도 TM 좌표로 변환
+        GeoPoint in_pt = new GeoPoint(longitude, latitude);
+        Log.d("gps 변환활 위경도","geo in : xGeo="  + in_pt.getX() + ", yGeo=" + in_pt.getY());
+        GeoPoint tm_pt = GeoTrans.convert(GeoTrans.GEO, GeoTrans.TM, in_pt);
+        Log.d("gps 변환된 TM좌표","tm : xTM=" + tm_pt.getX() + ", yTM=" + tm_pt.getY());
+
         // 미세먼지 수치 openAPI 에 직접 연결하는 방식
         // 추후 데이터베이스에서 받아오는 걸로 변경
         // 파싱된 데이터 log.d tag: 미세먼지 수치
