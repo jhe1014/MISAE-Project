@@ -28,7 +28,6 @@ import static com.project.misae_project.MainActivity.yLoc;
 
 public class LiveWeather extends AsyncTask<String, String, String> {
 
-    //private DatabaseReference mDatabase;
     private String str, receiveMsg;
     public static String[] arrayWeather;
 
@@ -132,32 +131,7 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         }
 
 
-     /*   try {
-            JSONArray jarrayW = new JSONObject(jsonString).getJSONArray("item");
-            for (int j = 0; j < jarrayW.length(); j++){
-                Log.d("test", "아곳 작동함");
-            }
-            for (int i = 0; i < jarrayW.length(); i++) {
-                JSONObject jObject = jarrayW.getJSONObject(i);
 
-                if (i == 3) {
-                    date = jObject.optString("baseDate");
-                    time = jObject.optString("baseTime");
-                    t1h =  jObject.optString("obsrValue");
-
-
-                    arrayWeather[0] = date;
-                    arrayWeather[1] = time;
-                    arrayWeather[2] = t1h;
-
-                    Log.d("t1h",arrayWeather[2]);
-
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-
-        }*/
         return arrayWeather;
     }
 
@@ -170,16 +144,6 @@ public class LiveWeather extends AsyncTask<String, String, String> {
         Log.d("날씨","날짜" + arrayWeather[0] +
                 "발표시각" + arrayWeather[1] +
                 "온도" + arrayWeather[2]);
-
-//        MainActivity.textView4.setText(
-//
-//                "측정소명 : " + stationName + "\n" +
-//                        "date : " + date + "\n" +
-//                        "time : " + time + "\n" +
-//                        "temperature : " + t1h + "\n"
-//
-//        );
-
 
 
     }

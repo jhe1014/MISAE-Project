@@ -23,7 +23,6 @@ import static com.project.misae_project.MainActivity.stationName;
 
 public class LiveAtmosphere extends AsyncTask<String, String, String> {
 
-    //private DatabaseReference mDatabase;
     private String str, receiveMsg;
     public static String[] arraysum;
 
@@ -142,19 +141,6 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
 
 
 
-
-//        MainActivity.textView.setText(
-//
-//                "측정소명 : " + stationName + "\n" +
-//                        "date : " + date + "\n" +
-//                        "pm10 : " + pm10 + "\n" +
-//                        "pm2.5 : " + pm25 + "\n" +
-//                        "co : " + co + "\n" +
-//                        "no2 : " + no2 + "\n" +
-//                        "so2 : " + so2 + "\n" +
-//                        "o3 : " + o3 + "\n"
-//
-//        );
 
 
 

@@ -53,8 +53,12 @@ public class MainActivity extends AppCompatActivity {
     public static int xLoc ;
     public static int yLoc ;
 
+    public static double xTM;
+    public static double yTM;
+
+
     // 미세먼지 수치 테스트용 변수
-    public static String stationName = "백석동";
+    public static String stationName = "";
 
 
 
@@ -104,11 +108,39 @@ public class MainActivity extends AppCompatActivity {
         GeoPoint in_pt = new GeoPoint(longitude, latitude);
         Log.d("gps 변환활 위경도","geo in : xGeo="  + in_pt.getX() + ", yGeo=" + in_pt.getY());
         GeoPoint tm_pt = GeoTrans.convert(GeoTrans.GEO, GeoTrans.TM, in_pt);
+        xTM = tm_pt.getX();
+        yTM = tm_pt.getY();
         Log.d("gps 변환된 TM좌표","tm : xTM=" + tm_pt.getX() + ", yTM=" + tm_pt.getY());
 
         // 미세먼지 수치 openAPI 에 직접 연결하는 방식
         // 추후 데이터베이스에서 받아오는 걸로 변경
         // 파싱된 데이터 log.d tag: 미세먼지 수치
+
+        try {
+
+            String resultTextS = new GetStationName().execute().get();
+            Log.d("측정소 통데이터",resultTextS);
+
+            new GetStationName().listjsonParserSt(resultTextS);
+            Log.d("측정소 이름", stationName);
+
+            //    public static String[] arrayWeahter;
+/*
+
+        date = LiveWeather.arrayWeather[0];
+        time = LiveWeather.arrayWeather[1];
+        t1h = LiveWeather.arrayWeather[2];
+
+
+*/
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
         try {
 
             String resultText = new LiveAtmosphere().execute().get();
@@ -159,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+
 
 
 
