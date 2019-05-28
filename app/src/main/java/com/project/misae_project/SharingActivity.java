@@ -339,7 +339,8 @@ public class SharingActivity extends AppCompatActivity {
                 user.put("pm2.5",et_pm2_5.getText().toString());
                 user.put("date",date.format(toDay));
                 if(!(choice_do.equals("Null"))) {
-                    db.collection("userset").document(choice_do+" "+choice_se+" "+et_user.getText().toString() )
+                    db.collection("userset").document(choice_do)
+                            .collection(choice_se).document(et_user.getText().toString())
                             .set(user)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
