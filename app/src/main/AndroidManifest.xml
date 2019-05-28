@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Mask_listview"></activity>
-        <activity android:name=".TabFragment1" />
         <activity android:name=".MapActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".MaskActivity" />

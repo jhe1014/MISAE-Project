@@ -20,8 +20,8 @@ public class TabFragment2 extends Fragment {
     private RecyclerView weather_time_HorizontalView;
     private WeatherTimeAdapter weather_time_Adapter;
 
-    /*private RecyclerView weather_date_HorizontalView;
-    private WeatherDateAdapter weather_date_Adapter;*/
+    private RecyclerView weather_date_HorizontalView;
+    private WeatherDateAdapter weather_date_Adapter;
 
     private LinearLayoutManager mLayoutManager;
 
@@ -40,6 +40,17 @@ public class TabFragment2 extends Fragment {
         weather_time_HorizontalView.setLayoutManager(mLayoutManager);
         weather_time_Adapter = new WeatherTimeAdapter();
 
+        // 일별 날씨 목록 (세로 RecyclerView)
+        View view2 = inflater.inflate(R.layout.air_date_item, container, false);
+        Context context2 = view2.getContext();
+        weather_date_HorizontalView = (RecyclerView) rootview.findViewById(R.id.weather_date_listview);
+
+        mLayoutManager = new LinearLayoutManager(context2);
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL); // 세로 배치
+
+        weather_date_HorizontalView.setLayoutManager(mLayoutManager);
+        weather_date_Adapter = new WeatherDateAdapter();
+
         // 시간별 날씨 데이터 삽입부
         ArrayList<WeatherTimeData> data1 = new ArrayList<>();
 
@@ -53,11 +64,25 @@ public class TabFragment2 extends Fragment {
 
         weather_time_HorizontalView.setAdapter(weather_time_Adapter);
 
+        // 일별 날씨 데이터 삽입부
+        ArrayList<WeatherDateData> data2 = new ArrayList<>();
+
+        int j = 0;
+        while (j < 10) {
+            data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
+            j++;
+        }
+
+        weather_date_Adapter.setData(data2);
+
+        weather_date_HorizontalView.setAdapter(weather_date_Adapter);
+
+
         return rootview;
     }
 }
 
-// 대기 성분 상태 목록에서 사용하는 부분 (여기서부터)
+// 시간별 날씨 목록에서 사용하는 부분 (여기서부터)
 class WeatherTimeAdapter extends RecyclerView.Adapter<WeatherTimeViewHolder> {
 
     private ArrayList<WeatherTimeData> WeatherTimeDatas;
@@ -125,4 +150,83 @@ class WeatherTimeData {
         return this.temp;
     }
 }
-// 대기 성분 상태 목록에서 사용하는 부분 (여기까지)
+// 시간별 날씨 목록에서 사용하는 부분 (여기까지)
+
+// 일별 날씨 목록에서 사용하는 부분 (여기서부터)
+class WeatherDateAdapter extends RecyclerView.Adapter<WeatherDateViewHolder> {
+
+    private ArrayList<WeatherDateData> WeatherDateDatas;
+
+    public void setData(ArrayList<WeatherDateData> list) {
+        WeatherDateDatas = list;
+    }
+
+    public WeatherDateViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // 사용할 아이템의 뷰 생성
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.weather_date_item, parent, false);
+
+        WeatherDateViewHolder holder = new WeatherDateViewHolder(view);
+
+        return holder;
+    }
+
+    public void onBindViewHolder(WeatherDateViewHolder holder, int position) {
+        WeatherDateData data = WeatherDateDatas.get(position);
+
+        holder.date.setText(data.getDate());
+        holder.icon.setImageResource(data.getImg());
+        holder.max_temp.setText(data.getMax());
+        holder.min_temp.setText(data.getMin());
+    }
+
+    public int getItemCount() {
+        return WeatherDateDatas.size();
+    }
+}
+
+class WeatherDateViewHolder extends RecyclerView.ViewHolder {
+    public TextView date;
+    public ImageView icon;
+    public TextView max_temp;
+    public TextView min_temp;
+
+    public WeatherDateViewHolder(View itemView) {
+        super(itemView);
+
+        date = (TextView) itemView.findViewById(R.id.weather_date_date);
+        icon = (ImageView) itemView.findViewById(R.id.weather_date_icon);
+        max_temp = (TextView) itemView.findViewById(R.id.weather_date_max);
+        min_temp = (TextView) itemView.findViewById(R.id.weather_date_min);
+    }
+}
+
+class WeatherDateData {
+    private String date;
+    private int img;
+    private String max_temp;
+    private String min_temp;
+
+    public WeatherDateData(String date, int img, String max_temp, String min_temp) {
+        this.date = date;
+        this.img = img;
+        this.max_temp = max_temp;
+        this.min_temp = min_temp;
+    }
+
+    public String getDate() {
+        return this.date;
+    }
+
+    public int getImg() {
+        return this.img;
+    }
+
+    public String getMax() {
+        return this.max_temp;
+    }
+
+    public String getMin() {
+        return this.min_temp;
+    }
+}
+// 일별 날씨 목록에서 사용하는 부분 (여기까지)

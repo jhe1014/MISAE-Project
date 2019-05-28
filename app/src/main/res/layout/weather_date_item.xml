@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/weather_date_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="요일"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/weather_date_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src ="@drawable/sun"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/weather_date_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최고기온"
+        android:layout_gravity="center"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/weather_date_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최저기온"
+        android:layout_gravity="center" />
+</LinearLayout>
