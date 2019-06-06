@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (id) {
                     case R.id.menu01 : // 게시판/공유(??)
-                        Toast.makeText(getApplicationContext(), "1번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "1번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
                         intent = new Intent(getApplicationContext(), SharingActivity.class);
                         startActivity(intent);
                         break;

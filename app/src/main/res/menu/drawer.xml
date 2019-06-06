@@ -4,7 +4,7 @@
         <item
             android:id="@+id/menu01"
             android:checked="true"
-            android:title="게시판/공유(??)"/>
+            android:title="미세먼지 수치 공유"/>
         <item
             android:id="@+id/menu02"
             android:title="식약처 마스크 확인"/>
