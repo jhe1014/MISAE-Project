@@ -51,7 +51,7 @@ public class TabFragment2 extends Fragment {
         weather_min_temp = (TextView)rootview.findViewById(R.id.min_temp);
 
         try {
-            new JSONTask().execute("http://192.168.28.1:3000/weather_condition");
+            new JSONTask().execute("http://192.168.8.1:3000/weather_condition");
         } catch (Exception e) {
 
         }
