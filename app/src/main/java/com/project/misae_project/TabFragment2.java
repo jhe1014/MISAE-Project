@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,6 +38,8 @@ public class TabFragment2 extends Fragment {
     private WeatherDateAdapter weather_date_Adapter;
 
     private LinearLayoutManager mLayoutManager;
+
+    String myJSON;
 
     private TextView weather_now;
     private TextView weather_now_comment;
@@ -110,15 +116,9 @@ public class TabFragment2 extends Fragment {
 
     // server.js 파일 실행부
     public class JSONTask extends AsyncTask<String, String, String> {
-
         @Override
         protected String doInBackground(String... urls) {
             try {
-                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
-                JSONObject jsonObject = new JSONObject();
-                //jsonObject.accumulate("user_id", "androidTest");
-                //jsonObject.accumulate("name", "yun");
-
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
 
@@ -126,6 +126,7 @@ public class TabFragment2 extends Fragment {
                     //URL url = new URL("http://192.168.25.16:3000/users");
                     URL url = new URL(urls[0]);//url을 가져온다.
                     con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder(); // 데이터 받는곳
                     con.connect();//연결 수행
 
                     //입력 스트림 생성
@@ -134,19 +135,16 @@ public class TabFragment2 extends Fragment {
                     //속도를 향상시키고 부하를 줄이기 위한 버퍼를 선언한다.
                     reader = new BufferedReader(new InputStreamReader(stream));
 
-                    //실제 데이터를 받는곳
-                    StringBuffer buffer = new StringBuffer();
-
                     //line별 스트링을 받기 위한 temp 변수
                     String line = "";
 
                     //아래라인은 실제 reader에서 데이터를 가져오는 부분이다. 즉 node.js서버로부터 데이터를 가져온다.
                     while((line = reader.readLine()) != null){
-                        buffer.append(line);
+                        sb.append(line + "\n");
                     }
 
                     //다 가져오면 String 형변환을 수행한다. 이유는 protected String doInBackground(String... urls) 니까
-                    return buffer.toString();
+                    return sb.toString().trim();
 
                     //아래는 예외처리 부분이다.
                 } catch (MalformedURLException e){
@@ -178,7 +176,24 @@ public class TabFragment2 extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            weather_now.setText(result);
+            try {
+                myJSON = result;
+                JSONArray jsonObj = new JSONArray(myJSON);
+                JSONObject obj = jsonObj.getJSONObject(0);
+
+                String weather_now_con = obj.getString("con");
+                String weather_now_com = obj.getString("comment");
+                String weather_now_max_temp = obj.getString("max_temp");
+                String weather_now_min_temp = obj.getString("min_temp");
+
+                weather_now.setText(weather_now_con);
+                weather_now_comment.setText(weather_now_com);
+                weather_max_temp.setText(weather_now_max_temp);
+                weather_min_temp.setText(weather_now_min_temp);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
     }
