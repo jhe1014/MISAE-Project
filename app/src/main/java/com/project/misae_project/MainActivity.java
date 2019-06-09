@@ -1,10 +1,14 @@
 package com.project.misae_project;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.Manifest;
@@ -26,7 +32,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.AccessController;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,6 +45,8 @@ import java.util.Locale;
 //변경된거 436에서
 
 import java.util.concurrent.ExecutionException;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -59,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     // 미세먼지 수치 테스트용 변수
     public static String stationName = "";
-
-
 
 
     @Override
@@ -282,9 +293,42 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START); // 사이드메뉴 뜨도록 하기
                 return true;
 
-            case R.id.menu_search :  // 검색 버튼
+            case R.id.menu_capture :  // 캡처 버튼
                 // Toast 코드는 임시로 작성한 것이므로 사용하지 않을 시 삭제하기
-                Toast.makeText(getApplicationContext(), "검색 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "캡쳐 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+
+                Date now = new Date();
+                android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+
+                String mPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/" + now + ".jpeg";
+                FileOutputStream fos;
+
+                try {
+                    View container = getWindow().getDecorView().getRootView();
+                    container.setDrawingCacheEnabled(true);
+                    Bitmap captureView = Bitmap.createBitmap(container.getDrawingCache());
+                    container.setDrawingCacheEnabled(false);
+
+                    File ImageFile = new File(mPath);
+                    fos = new FileOutputStream(ImageFile);
+
+                    captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.flush();
+                    fos.close();
+
+                    Uri uri = (Uri) FileProvider.getUriForFile(getApplicationContext(), "com.project.MISAE-Project.fileprovider", ImageFile);
+
+                    Intent shareintent = new Intent(Intent.ACTION_SEND);
+                    shareintent.putExtra(Intent.EXTRA_STREAM, uri);
+                    shareintent.setType("image/*");
+                    startActivity(Intent.createChooser(shareintent, "공유"));
+
+                    //ImageFile.delete();
+
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
+
                 return true;
 
             case R.id.menu_renew : // 지도 버튼
