@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class TabFragment1 extends Fragment {
@@ -29,9 +33,14 @@ public class TabFragment1 extends Fragment {
 
     private LinearLayoutManager mLayoutManager;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
+
+
+        Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
 
         // 대기 성분들 상태 목록 (가로 RecyclerView)
         View view1 = inflater.inflate(R.layout.air_condition_item, container, false);
@@ -79,12 +88,25 @@ public class TabFragment1 extends Fragment {
 
         air_con_HorizontalView.setAdapter(air_con_Adapter);
 
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("a h");
+        String getTime = sdf.format(date);
+
+        Log.d("미세먼지 시간별", getTime);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+
         // 시간별 미세먼지 상태 데이터 삽입부
         ArrayList<AirTimeData> data2 = new ArrayList<>();
 
         int j = 0;
         while (j < 10) {
-            data2.add(new AirTimeData("시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+            data2.add(new AirTimeData(sdf.format(cal.getTime())+"시", R.drawable.baseline_tag_faces_black_48, "좋음"));
+            cal.add(Calendar.HOUR,  1);
             j++;
         }
 

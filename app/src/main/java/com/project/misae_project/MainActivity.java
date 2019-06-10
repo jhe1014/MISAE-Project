@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
     // 미세먼지 수치 테스트용 변수
     public static String stationName = "";
 
+    // 주소 구,동
+    public static String addM1 ="";
+    public static String addM2 ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -446,7 +450,9 @@ public class MainActivity extends AppCompatActivity {
             addresses = geocoder.getFromLocation(
                     latitude,
                     longitude,
-                    7);
+                    1);
+
+
         } catch (IOException ioException) {
             //네트워크 문제
             Toast.makeText(this, "지오코더 서비스 사용불가", Toast.LENGTH_LONG).show();
@@ -462,6 +468,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "주소 미발견", Toast.LENGTH_LONG).show();
             return "주소 미발견";
 
+        }
+        if (addresses != null) {
+            addM1 = addresses.get(0).getLocality();
+            addM2 = addresses.get(0).getSubLocality();
         }
 
         Address address = addresses.get(0);

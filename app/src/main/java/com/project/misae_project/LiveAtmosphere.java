@@ -48,6 +48,7 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
+            Log.d("미세먼지 url",url.toString());
 
             if (conn.getResponseCode() == conn.HTTP_OK) {
                 InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8");

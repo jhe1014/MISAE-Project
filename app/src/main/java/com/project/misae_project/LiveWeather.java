@@ -54,7 +54,7 @@ public class LiveWeather extends AsyncTask<String, String, String> {
 
         Log.d("gps 격자전달확인", xLoc+"\n"+ yLoc);
         try {
-            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time=0600&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
+            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time=0000&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
 
          Log.d("날씨 url",url.toString());
 
