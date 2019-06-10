@@ -131,6 +131,8 @@ class AirConAdapter extends RecyclerView.Adapter<AirConViewHolder> {
     public void onBindViewHolder(AirConViewHolder holder, int position) {
         AirListData data = AirConDatas.get(position);
 
+
+        //일별예보
         holder.name.setText(data.getName());
         holder.icon.setImageResource(data.getImg());
         holder.condition.setText(data.getCondition());

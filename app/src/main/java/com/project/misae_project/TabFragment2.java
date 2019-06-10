@@ -57,7 +57,7 @@ public class TabFragment2 extends Fragment {
         weather_min_temp = (TextView)rootview.findViewById(R.id.min_temp);
 
         try {
-            new JSONTask().execute("http://192.168.8.1:3000/misae_db");
+            new JSONTask().execute("http://192.168.21.1:3000/misae_db");
         } catch (Exception e) {
 
         }
@@ -87,6 +87,8 @@ public class TabFragment2 extends Fragment {
         // 시간별 날씨 데이터 삽입부
         ArrayList<WeatherTimeData> data1 = new ArrayList<>();
 
+
+        //시간별 예보 반복문
         int i = 0;
         while (i < 10) {
             data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
@@ -100,6 +102,8 @@ public class TabFragment2 extends Fragment {
         // 일별 날씨 데이터 삽입부
         ArrayList<WeatherDateData> data2 = new ArrayList<>();
 
+
+        //요일별예보 반복문
         int j = 0;
         while (j < 10) {
             data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
@@ -186,6 +190,8 @@ public class TabFragment2 extends Fragment {
                 String weather_now_max_temp = obj.getString("max_temp");
                 String weather_now_min_temp = obj.getString("min_temp");
 
+
+                // 상위부분 4가지
                 weather_now.setText(weather_now_con);
                 weather_now_comment.setText(weather_now_com);
                 weather_max_temp.setText(weather_now_max_temp);
@@ -291,6 +297,7 @@ class WeatherDateAdapter extends RecyclerView.Adapter<WeatherDateViewHolder> {
     public void onBindViewHolder(WeatherDateViewHolder holder, int position) {
         WeatherDateData data = WeatherDateDatas.get(position);
 
+        //요일별예보 변수자리들
         holder.date.setText(data.getDate());
         holder.icon.setImageResource(data.getImg());
         holder.max_temp.setText(data.getMax());

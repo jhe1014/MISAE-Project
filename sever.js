@@ -2,7 +2,7 @@ var express = require('express');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host : '192.168.8.1',
+    host : '192.168.21.1',
     user : 'jhe',
     password : 'jhe31240',
     database : 'misae_db'
