@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 주석 달아놓은 부분 또 실행 안됩니다.. 제 컴퓨터로 돌리면서 이상해지는건지ㅠㅠ 왜 안돼죠
 
-        /*try {
+        try {
 
             String resultTextS = new GetStationName().execute().get();
             Log.d("측정소 통데이터",resultTextS);
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             new GetStationName().listjsonParserSt(resultTextS);
             Log.d("측정소 이름", stationName);
 
-            //    public static String[] arrayWeahter; */
+            //    public static String[] arrayWeahter;
 /*
 
         date = LiveWeather.arrayWeather[0];
@@ -146,21 +146,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 */
-/*
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }*/
+        }
 
 
-      /*  try {
+        try {
 
             String resultText = new LiveAtmosphere().execute().get();
             new LiveAtmosphere().listjsonParser(resultText);
             new LiveAtmosphere().setLA();
             Log.d("미세먼지 통데이터",resultText);
-*/
+
 
             //    public static String[] arraysum;
 /*
@@ -174,13 +174,13 @@ public class MainActivity extends AppCompatActivity {
             arraysum[7] = mang;
 */
 
-   /*     } catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-*/
- /*       try {
+
+        try {
 
             String resultTextW = new LiveWeather().execute().get();
             Log.d("날씨 메인통데이터",resultTextW);
@@ -198,14 +198,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 */
-/*
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-*/
+
 
 
 
