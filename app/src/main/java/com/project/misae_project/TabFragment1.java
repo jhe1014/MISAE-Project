@@ -78,11 +78,15 @@ public class TabFragment1 extends Fragment {
         // 대기 성분 상태 데이터 삽입부
         ArrayList<AirListData> data1 = new ArrayList<>();
 
-        int i = 0;
-        while (i < 10) {
-            data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", "수치"));
-            i++;
-        }
+
+            data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[1]));
+        data1.add(new AirListData("초미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[2]));
+        data1.add(new AirListData("이산화질소", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[4]));
+        data1.add(new AirListData("오존", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[6]));
+        data1.add(new AirListData("일산화탄소", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[3]));
+        data1.add(new AirListData("아황산가스", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[5]));
+
+
 
         air_con_Adapter.setData(data1);
 
