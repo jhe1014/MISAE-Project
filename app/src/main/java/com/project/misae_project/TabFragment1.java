@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 
 public class TabFragment1 extends Fragment {
@@ -33,11 +34,25 @@ public class TabFragment1 extends Fragment {
 
     private LinearLayoutManager mLayoutManager;
 
+    TextView time;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
+
+        // 현재시간 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
+        time = (TextView) rootview.findViewById(R.id.time_now1);
+
+        TimeZone tz;
+        Date mDate = new Date();
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        tz = TimeZone.getTimeZone("Asia/Seoul");
+        mFormat.setTimeZone(tz);
+
+        String time_now = mFormat.format(mDate);
+        time.setText(time_now);
 
 
         //Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
@@ -79,7 +94,7 @@ public class TabFragment1 extends Fragment {
         ArrayList<AirListData> data1 = new ArrayList<>();
 
 
-            data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[1]));
+        data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[1]));
         data1.add(new AirListData("초미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[2]));
         data1.add(new AirListData("이산화질소", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[4]));
         data1.add(new AirListData("오존", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[6]));
@@ -102,6 +117,8 @@ public class TabFragment1 extends Fragment {
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
+
+
 
 
         // 시간별 미세먼지 상태 데이터 삽입부

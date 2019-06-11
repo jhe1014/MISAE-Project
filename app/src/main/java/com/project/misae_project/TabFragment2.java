@@ -26,7 +26,10 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 public class TabFragment2 extends Fragment {
@@ -41,6 +44,8 @@ public class TabFragment2 extends Fragment {
 
     String myJSON;
 
+    TextView time;
+
     private TextView weather_now;
     private TextView weather_now_comment;
     private TextView weather_max_temp;
@@ -49,6 +54,18 @@ public class TabFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment2, container, false);
+
+        time = (TextView) rootview.findViewById(R.id.time_now2);
+
+        // 현재시간 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
+        TimeZone tz;
+        Date mDate = new Date();
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        tz = TimeZone.getTimeZone("Asia/Seoul");
+        mFormat.setTimeZone(tz);
+
+        String time_now2 = mFormat.format(mDate);
+        time.setText(time_now2);
 
         // 현재 날씨
         weather_now = (TextView)rootview.findViewById(R.id.weather_text);
