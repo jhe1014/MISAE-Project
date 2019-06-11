@@ -151,8 +151,22 @@ public class TabFragment2 extends Fragment {
         data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[1], ForecastWeather.arrayWeatherF[0]));
         calT2.add(Calendar.DATE, 1);
         data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[3], ForecastWeather.arrayWeatherF[2]));
-
-
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[8], MidForecastWeather.arrayWeatherM[0]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[9], MidForecastWeather.arrayWeatherM[1]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[10], MidForecastWeather.arrayWeatherM[2]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[11], MidForecastWeather.arrayWeatherM[3]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[12], MidForecastWeather.arrayWeatherM[4]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[13], MidForecastWeather.arrayWeatherM[5]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[14], MidForecastWeather.arrayWeatherM[6]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, MidForecastWeather.arrayWeatherM[15], MidForecastWeather.arrayWeatherM[7]));
 
 
         weather_date_Adapter.setData(data2);

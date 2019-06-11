@@ -212,6 +212,24 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // 중기 날씨 예보
+        try {
+
+            String resultTextM = new MidForecastWeather().execute().get();
+            Log.d("날씨 메인통데이터",resultTextM);
+
+            new MidForecastWeather().listjsonParserWeatherM(resultTextM);
+            new MidForecastWeather().setWM();
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+
         try {
 
             String resultTextW = new LiveWeather().execute().get();
@@ -227,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Log.d("날씨중단기",MidForecastWeather.arrayWeatherM[0]+" "+MidForecastWeather.arrayWeatherM[8]);
 
 
 
