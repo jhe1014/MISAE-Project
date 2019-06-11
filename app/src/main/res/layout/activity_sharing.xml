@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:onClick="c_GPS"
-            android:text="현 위치 입력" />
+            android:text="공유 게시판" />
 
     </LinearLayout>
 
