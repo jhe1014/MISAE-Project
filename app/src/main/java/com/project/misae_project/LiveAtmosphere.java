@@ -101,8 +101,8 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
                 mang = jObject.optString("mangName");
 
                 arraysum[0] = date;
-                arraysum[1] = pm10+"㎍/㎥";
-                arraysum[2] = pm25+"㎍/㎥";
+                arraysum[1] = pm10;
+                arraysum[2] = pm25;
                 arraysum[3] = co+"ppm";
                 arraysum[4] = no2+"ppm";
                 arraysum[5] = so2+"ppm";
