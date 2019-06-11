@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public static double xTM;
     public static double yTM;
 
+    public static String address = "";
 
     // 미세먼지 수치 테스트용 변수
     public static String stationName = "";
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         double latitude = gpsTracker.getLatitude();
         double longitude = gpsTracker.getLongitude();
 
-        String address = getCurrentAddress(latitude, longitude);
+        address = getCurrentAddress(latitude, longitude);
 
 
         Log.d("gps 주소",  address);
@@ -251,13 +252,13 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu02 : // 식약처 마스크 확인
-                        Toast.makeText(getApplicationContext(), "2번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "2번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
                         intent = new Intent(getApplicationContext(), MaskActivity.class);
                         startActivity(intent);
                         break;
 
                     case R.id.menu03 : // 설정
-                        Toast.makeText(getApplicationContext(), "3번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "3번 메뉴를 누르셨습니다.", Toast.LENGTH_LONG).show();
                         intent = new Intent(getApplicationContext(), SettingActivity.class);
                         startActivity(intent);
                         break;
@@ -314,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.menu_capture :  // 캡처 버튼
                 // Toast 코드는 임시로 작성한 것이므로 사용하지 않을 시 삭제하기
-                Toast.makeText(getApplicationContext(), "캡쳐 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "캡쳐 버튼을 누르셨습니다.", Toast.LENGTH_LONG).show();
 
                 Date now = new Date();
                 android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
