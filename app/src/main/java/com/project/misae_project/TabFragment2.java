@@ -65,7 +65,6 @@ public class TabFragment2 extends Fragment {
         time = (TextView) rootview.findViewById(R.id.time_now2);
 
 
-
         TimeZone tz;
         Date mDate = new Date();
         SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");

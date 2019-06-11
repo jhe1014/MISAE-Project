@@ -114,7 +114,7 @@ public class TabFragment1 extends Fragment {
         int misae;
         misae = Integer.parseInt(LiveAtmosphere.arraysum[1]);
 
-        Log.e ("테스트", String.valueOf(misae));
+        //Log.e ("테스트", String.valueOf(misae));
 
         if (misae >= 0 && misae <= 30) {
             cImg = R.drawable.emoji_good;
@@ -233,7 +233,7 @@ public class TabFragment1 extends Fragment {
 
         int j = 0;
         while (j < 10) {
-            data2.add(new AirTimeData(sdf.format(cal.getTime())+"시", R.drawable.baseline_tag_faces_black_48, "좋음"));
+            data2.add(new AirTimeData(sdf.format(cal.getTime())+"시", R.drawable.emoji_good, "좋음"));
             cal.add(Calendar.HOUR,  1);
             j++;
         }
@@ -254,11 +254,11 @@ public class TabFragment1 extends Fragment {
         calT1.setTime(dateT1);
 
 
-        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.emoji_good, "좋음"));
         calT1.add(Calendar.DATE, 1);
-        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.emoji_good, "좋음"));
         calT1.add(Calendar.DATE, 1);
-        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.emoji_good, "좋음"));
 
 
 
