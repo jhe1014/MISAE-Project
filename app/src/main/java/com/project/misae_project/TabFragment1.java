@@ -42,6 +42,8 @@ public class TabFragment1 extends Fragment {
     TextView con;
     TextView comment;
 
+    int cImg = R.drawable.emoji_sogood;
+    String cCon = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,16 +111,39 @@ public class TabFragment1 extends Fragment {
         // 대기 성분 상태 데이터 삽입부
         ArrayList<AirListData> data1 = new ArrayList<>();
 
-        int cImg;
-        String cCon;
+        if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 0 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 30) {
+            cImg = R.drawable.emoji_good;
+            cCon = "좋음";
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 31 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 50) {
+            cImg = R.drawable.emoji_soso;
+            cCon = "보통";
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 51 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 100) {
+            cImg = R.drawable.emoji_bad;
+            cCon = "나쁨";
+        } else {
+            cImg = R.drawable.emoji_sobad;
+            cCon = "매우나쁨";
+        }
 
-        /*if ((LiveAtmosphere.arraysum[1]). >= 0 || LiveAtmosphere.arraysum[1] <= 30) {
+        data1.add(new AirListData("미세먼지", cImg, cCon, LiveAtmosphere.arraysum[1]+"㎍/㎥"));
 
-        }*/
+        if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 0 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 15) {
+            cImg = R.drawable.emoji_good;
+            cCon = "좋음";
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 16 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 25) {
+            cImg = R.drawable.emoji_soso;
+            cCon = "보통";
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 26 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 50) {
+            cImg = R.drawable.emoji_bad;
+            cCon = "나쁨";
+        } else {
+            cImg = R.drawable.emoji_sobad;
+            cCon = "매우나쁨";
+        }
+
+        data1.add(new AirListData("초미세먼지", cImg, cCon, LiveAtmosphere.arraysum[2]+"㎍/㎥"));
 
 
-        data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[1]));
-        data1.add(new AirListData("초미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[2]));
         data1.add(new AirListData("이산화질소", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[4]));
         data1.add(new AirListData("오존", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[6]));
         data1.add(new AirListData("일산화탄소", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[3]));
