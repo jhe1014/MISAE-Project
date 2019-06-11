@@ -44,7 +44,7 @@ public class TabFragment1 extends Fragment {
 
         // 현재위치 출력
         location = (TextView) rootview.findViewById(R.id.misae_location);
-        location.setText(MainActivity.address);
+        location.setText(MainActivity.addM1+" "+MainActivity.addM2);
 
         // 현재시간 출력 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
         time = (TextView) rootview.findViewById(R.id.time_now1);
