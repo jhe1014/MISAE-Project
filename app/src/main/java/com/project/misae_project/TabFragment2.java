@@ -191,11 +191,12 @@ public class TabFragment2 extends Fragment {
                 String weather_now_min_temp = obj.getString("min_temp");
 
 
+                Log.d("날씨 데이터호출확인","주소" + MainActivity.addM1+" "+MainActivity.addM2 + " 최고 최저"+ ForecastWeather.arrayWeatherF[0] +" " + ForecastWeather.arrayWeatherF[0]);
                 // 상위부분 4가지
-                weather_now.setText(weather_now_con);
-                weather_now_comment.setText(weather_now_com);
-                weather_max_temp.setText(weather_now_max_temp);
-                weather_min_temp.setText(weather_now_min_temp);
+                weather_now.setText(MainActivity.addM1+" "+MainActivity.addM2);
+                weather_now_comment.setText("상태");
+                weather_max_temp.setText(ForecastWeather.arrayWeatherF[0]);
+                weather_min_temp.setText(ForecastWeather.arrayWeatherF[0]);
 
             } catch (JSONException e) {
                 e.printStackTrace();

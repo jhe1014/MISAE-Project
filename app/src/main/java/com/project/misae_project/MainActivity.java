@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         double longitude = gpsTracker.getLongitude();
 
         String address = getCurrentAddress(latitude, longitude);
+
+
         Log.d("gps 주소",  address);
         //textview_address.setText(address);
 
@@ -141,15 +143,6 @@ public class MainActivity extends AppCompatActivity {
             new GetStationName().listjsonParserSt(resultTextS);
             Log.d("측정소 이름", stationName);
 
-            //    public static String[] arrayWeahter;
-/*
-
-        date = LiveWeather.arrayWeather[0];
-        time = LiveWeather.arrayWeather[1];
-        t1h = LiveWeather.arrayWeather[2];
-
-
-*/
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -164,19 +157,6 @@ public class MainActivity extends AppCompatActivity {
             new LiveAtmosphere().listjsonParser(resultText);
             new LiveAtmosphere().setLA();
             Log.d("미세먼지 통데이터",resultText);
-
-
-            //    public static String[] arraysum;
-/*
-            arraysum[0] = date;
-            arraysum[1] = pm10;
-            arraysum[2] = pm25;
-            arraysum[3] = co;
-            arraysum[4] = no2;
-            arraysum[5] = so2;
-            arraysum[6] = o3;
-            arraysum[7] = mang;
-*/
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -193,15 +173,21 @@ public class MainActivity extends AppCompatActivity {
             new LiveWeather().setLW();
 
 
-            //    public static String[] arrayWeahter;
-/*
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-        date = LiveWeather.arrayWeather[0];
-        time = LiveWeather.arrayWeather[1];
-        t1h = LiveWeather.arrayWeather[2];
+        // 날씨 예뽀
+        try {
 
+            String resultTextF = new ForecastWeather().execute().get();
+            Log.d("날씨예보 메인통데이터",resultTextF);
 
-*/
+            new ForecastWeather().listjsonParserWeatherF(resultTextF);
+            new ForecastWeather().setFW();
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -209,8 +195,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
+        Log.d("날씨 데이터호출확인","주소" + MainActivity.addM1+" "+MainActivity.addM2 + " 최고 최저"+ ForecastWeather.arrayWeatherF[0] +" " + ForecastWeather.arrayWeatherF[1]);
 
 
 
@@ -438,6 +423,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     public String getCurrentAddress(double latitude, double longitude) {
 
         //지오코더... GPS를 주소로 변환
@@ -478,6 +465,8 @@ public class MainActivity extends AppCompatActivity {
         return address.getAddressLine(0).toString() + "\n";
 
     }
+
+
 
 
     //여기부터는 GPS 활성화를 위한 메소드들

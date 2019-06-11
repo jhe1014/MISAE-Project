@@ -40,7 +40,7 @@ public class TabFragment1 extends Fragment {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
 
 
-        Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
+        //Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
 
         // 대기 성분들 상태 목록 (가로 RecyclerView)
         View view1 = inflater.inflate(R.layout.air_condition_item, container, false);
@@ -131,6 +131,7 @@ public class TabFragment1 extends Fragment {
         air_date_Adapter.setData(data3);
 
         air_date_HorizontalView.setAdapter(air_date_Adapter);
+
 
         return rootview;
     }
