@@ -41,7 +41,9 @@ public class TabFragment1 extends Fragment {
 
     TextView con;
     TextView comment;
+    ImageView misae_icon;
 
+    int misae;
     int cImg;
     String cCon;
 
@@ -65,13 +67,15 @@ public class TabFragment1 extends Fragment {
         String time_now = mFormat.format(mDate);
         time.setText(time_now);
 
+        misae_icon = rootview.findViewById(R.id.misae_icon);
+
         // 맨위 상태 출력 부분
         con = rootview.findViewById(R.id.big_con1);
-        con.setText("좋음");
+        //con.setText("좋음");
 
         // 코멘트 출력 부분
         comment = rootview.findViewById(R.id.misae_comment);
-        comment.setText("오늘은 외출해도 좋을 것 같아요!");
+        //comment.setText("오늘은 외출해도 좋을 것 같아요!");
 
         //Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
 
@@ -111,7 +115,6 @@ public class TabFragment1 extends Fragment {
         // 대기 성분 상태 데이터 삽입부
         ArrayList<AirListData> data1 = new ArrayList<>();
 
-        int misae;
         misae = Integer.parseInt(LiveAtmosphere.arraysum[1]);
 
         //Log.e ("테스트", String.valueOf(misae));
@@ -119,15 +122,27 @@ public class TabFragment1 extends Fragment {
         if (misae >= 0 && misae <= 30) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
+            misae_icon.setImageResource(R.drawable.emoji_good);
+            con.setText("좋음");
+            comment.setText("오늘은 외출해도 좋을 것 같아요!");
         } else if (misae >= 31 && misae <= 50) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
+            misae_icon.setImageResource(R.drawable.emoji_soso);
+            con.setText("보통");
+            comment.setText("외출 후에 잘 씻기!");
         } else if (misae >= 51 && misae <= 100) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
+            misae_icon.setImageResource(R.drawable.emoji_bad);
+            con.setText("나쁨");
+            comment.setText("마스크 꼭 끼고 나가기!");
         } else {
             cImg = R.drawable.emoji_sobad;
             cCon = "매우나쁨";
+            misae_icon.setImageResource(R.drawable.emoji_sobad);
+            con.setText("매우나쁨");
+            comment.setText("오늘은 실외활동을 자제하는 것이 좋을 것 같아요!");
         }
 
         data1.add(new AirListData("미세먼지", cImg, cCon, LiveAtmosphere.arraysum[1]+"㎍/㎥"));
