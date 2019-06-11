@@ -103,10 +103,10 @@ public class LiveAtmosphere extends AsyncTask<String, String, String> {
                 arraysum[0] = date;
                 arraysum[1] = pm10;
                 arraysum[2] = pm25;
-                arraysum[3] = co+"ppm";
-                arraysum[4] = no2+"ppm";
-                arraysum[5] = so2+"ppm";
-                arraysum[6] = o3+"ppm";
+                arraysum[3] = co;
+                arraysum[4] = no2;
+                arraysum[5] = so2;
+                arraysum[6] = o3;
                 arraysum[7] = mang;
 
 
