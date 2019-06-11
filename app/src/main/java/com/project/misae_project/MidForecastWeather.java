@@ -140,23 +140,23 @@ public class MidForecastWeather extends AsyncTask<String, String, String> {
             Max10 = weatherLMObjR.optString("taMax10");
 
 
-            arrayWeatherM[0] = Min3+"°C";
-            arrayWeatherM[1] = Min4+"°C";
-            arrayWeatherM[2] = Min5+"°C";
-            arrayWeatherM[3] = Min6+"°C";
-            arrayWeatherM[4] = Min7+"°C";
-            arrayWeatherM[5] = Min8+"°C";
-            arrayWeatherM[6] = Min9+"°C";
-            arrayWeatherM[7] = Min10+"°C";
+            arrayWeatherM[0] = Min3+".0"+"°C";
+            arrayWeatherM[1] = Min4+".0"+"°C";
+            arrayWeatherM[2] = Min5+".0"+"°C";
+            arrayWeatherM[3] = Min6+".0"+"°C";
+            arrayWeatherM[4] = Min7+".0"+"°C";
+            arrayWeatherM[5] = Min8+".0"+"°C";
+            arrayWeatherM[6] = Min9+".0"+"°C";
+            arrayWeatherM[7] = Min10+".0"+"°C";
 
-            arrayWeatherM[8] = Max3+"°C";
-            arrayWeatherM[9] = Max4+"°C";
-            arrayWeatherM[10] = Max5+"°C";
-            arrayWeatherM[11] = Max6+"°C";
-            arrayWeatherM[12] = Max7+"°C";
-            arrayWeatherM[13] = Max8+"°C";
-            arrayWeatherM[14] = Max9+"°C";
-            arrayWeatherM[15] = Max10+"°C";
+            arrayWeatherM[8] = Max3+".0"+"°C";
+            arrayWeatherM[9] = Max4+".0"+"°C";
+            arrayWeatherM[10] = Max5+".0"+"°C";
+            arrayWeatherM[11] = Max6+".0"+"°C";
+            arrayWeatherM[12] = Max7+".0"+"°C";
+            arrayWeatherM[13] = Max8+".0"+"°C";
+            arrayWeatherM[14] = Max9+".0"+"°C";
+            arrayWeatherM[15] = Max10+".0"+"°C";
 
 
             Log.d("날씨중단기",arrayWeatherM[0]+" "+arrayWeatherM[8]);
