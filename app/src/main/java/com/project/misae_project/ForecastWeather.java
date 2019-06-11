@@ -31,6 +31,8 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
 
     private String str, receiveMsg;
     public static String[] arrayWeatherF;
+    public static String[] arrayWeatherFT;
+
 
 
     private String  TMN = null;
@@ -38,6 +40,24 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
 
     private String  TMN2 = null;
     private String  TMX2 = null;
+
+    private String  T3H1 = null;
+    private String  T3H2 = null;
+
+    private String  T3H3 = null;
+    private String  T3H4 = null;
+
+    private String  T3H5 = null;
+    private String  T3H6 = null;
+
+    private String  T3H1T = null;
+    private String  T3H2T = null;
+
+    private String  T3H3T = null;
+    private String  T3H4T = null;
+
+    private String  T3H5T = null;
+    private String  T3H6T = null;
 
     @Override
     protected String doInBackground(String... strings) {
@@ -93,6 +113,7 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
         String  time = null;
 
         arrayWeatherF = new String[4];
+        arrayWeatherFT = new String[12];
         try{
 
 
@@ -112,6 +133,14 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
             JSONObject weatherFTMX = (JSONObject) weatherArray.get(37);
             JSONObject weatherFTMX2= (JSONObject) weatherArray.get(119);
 
+            JSONObject weatherFTH31 = (JSONObject) weatherArray.get(6);
+            JSONObject weatherFTH32 = (JSONObject) weatherArray.get(16);
+
+            JSONObject weatherFTH33 = (JSONObject) weatherArray.get(27);
+            JSONObject weatherFTH34= (JSONObject) weatherArray.get(36);
+
+            JSONObject weatherFTH35 = (JSONObject) weatherArray.get(48);
+            JSONObject weatherFTH36= (JSONObject) weatherArray.get(57);
 
 
             TMN = weatherFTMN.optString("fcstValue");
@@ -128,6 +157,36 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
 
                     Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
                             "최대온도" + arrayWeatherF[1]);
+
+            T3H1 = weatherFTH31.optString("fcstValue");
+            T3H2 = weatherFTH32.optString("fcstValue");
+            T3H3 = weatherFTH33.optString("fcstValue");
+            T3H4 = weatherFTH34.optString("fcstValue");
+            T3H5 = weatherFTH35.optString("fcstValue");
+            T3H6 = weatherFTH36.optString("fcstValue");
+
+            T3H1T = weatherFTH31.optString("fcstTime");
+            T3H2T = weatherFTH32.optString("fcstTime");
+            T3H3T = weatherFTH33.optString("fcstTime");
+            T3H4T = weatherFTH34.optString("fcstTime");
+            T3H5T = weatherFTH35.optString("fcstTime");
+            T3H6T = weatherFTH36.optString("fcstTime");
+
+            arrayWeatherFT[0] = T3H1+"°C";
+            arrayWeatherFT[1] = T3H2+"°C";
+            arrayWeatherFT[2] = T3H3+"°C";
+            arrayWeatherFT[3] = T3H4+"°C";
+            arrayWeatherFT[4] = T3H5+"°C";
+            arrayWeatherFT[5] = T3H6+"°C";
+            arrayWeatherFT[6] = T3H1T;
+            arrayWeatherFT[7] = T3H2T;
+            arrayWeatherFT[8] = T3H3T;
+            arrayWeatherFT[9] = T3H4T;
+            arrayWeatherFT[10] = T3H5T;
+            arrayWeatherFT[11] = T3H6T;
+
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();

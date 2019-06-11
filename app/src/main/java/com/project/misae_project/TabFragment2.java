@@ -81,6 +81,11 @@ public class TabFragment2 extends Fragment {
         weather_max_temp = (TextView)rootview.findViewById(R.id.max_temp);
         weather_min_temp = (TextView)rootview.findViewById(R.id.min_temp);
 
+        weather_now.setText("맑음");
+        weather_now_comment.setText("");
+        weather_max_temp.setText(ForecastWeather.arrayWeatherF[0]);
+        weather_min_temp.setText(ForecastWeather.arrayWeatherF[1]);
+
         try {
             new JSONTask().execute("http://192.168.21.1:3000/misae_db");
         } catch (Exception e) {
@@ -115,10 +120,12 @@ public class TabFragment2 extends Fragment {
 
         //시간별 예보 반복문
 
-        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[3], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[0]));
-        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[4], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[1]));
-        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[5], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[2]));
-
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[6], R.drawable.sun, ForecastWeather.arrayWeatherFT[0]));
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[7], R.drawable.sun, ForecastWeather.arrayWeatherFT[1]));
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[8], R.drawable.sun, ForecastWeather.arrayWeatherFT[2]));
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[9], R.drawable.sun, ForecastWeather.arrayWeatherFT[3]));
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[10], R.drawable.sun, ForecastWeather.arrayWeatherFT[4]));
+        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[11], R.drawable.sun, ForecastWeather.arrayWeatherFT[5]));
 
 
 
