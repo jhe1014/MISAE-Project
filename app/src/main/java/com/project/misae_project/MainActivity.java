@@ -197,6 +197,36 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("날씨 데이터호출확인","주소" + MainActivity.addM1+" "+MainActivity.addM2 + " 최고 최저"+ ForecastWeather.arrayWeatherF[0] +" " + ForecastWeather.arrayWeatherF[1]);
 
+        // 날씨 초단기예보
+        try {
+
+            String resultTextLF = new LiveForecastWeather().execute().get();
+            new LiveForecastWeather().listjsonParserWeatherLF(resultTextLF);
+            new LiveForecastWeather().setLF();
+            Log.d("미세먼지 통데이터",resultTextLF);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        try {
+
+            String resultTextW = new LiveWeather().execute().get();
+            Log.d("날씨 메인통데이터",resultTextW);
+
+            new LiveWeather().listjsonParserWeather(resultTextW);
+            new LiveWeather().setLW();
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         setSupportActionBar(toolbar);
@@ -458,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (addresses != null) {
             addM1 = addresses.get(0).getLocality();
-            addM2 = addresses.get(0).getSubLocality();
+            addM2 = addresses.get(0).getThoroughfare();
         }
 
         Address address = addresses.get(0);

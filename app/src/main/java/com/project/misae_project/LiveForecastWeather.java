@@ -27,13 +27,16 @@ import static com.project.misae_project.MainActivity.xLoc;
 import static com.project.misae_project.MainActivity.yLoc;
 
 
-public class ForecastWeather extends AsyncTask<String, String, String> {
+public class LiveForecastWeather extends AsyncTask<String, String, String> {
 
     private String str, receiveMsg;
     public static String[] arrayWeatherF;
 
 
-    private String  TMN = null;
+
+    private String  T11 = null;
+    private String  T12 = null;
+    private String  T13 = null;
     private String  TMX = null;
 
     @Override
@@ -50,11 +53,23 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
 
         Log.d("날씨예뽀 일자", getTime);
 
+        long nowT = System.currentTimeMillis();
+        Date dateT = new Date(nowT);
+        SimpleDateFormat sdfT = new SimpleDateFormat("HH00");
+
+        Calendar calT = Calendar.getInstance();
+        calT.setTime(dateT);
+        calT.add(Calendar.HOUR, -1);
+
+        String getTimeT = sdfT.format(calT.getTime());
+        Log.d("시간한시간전",getTimeT);
+
+
         Log.d("gps 격자전달확인", xLoc+"\n"+ yLoc);
         try {
-            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time=0200&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=155&_type=json");
+            url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastTimeData?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time="+getTimeT+"&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=155&_type=json");
 
-            Log.d("날씨예보 url",url.toString());
+            Log.d("날씨초단기예보 url",url.toString());
 
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -83,7 +98,7 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
         return receiveMsg;
     }
 
-    public String[] listjsonParserWeatherF(String jsonString) {
+    public String[] listjsonParserWeatherLF(String jsonString) {
 
         String  date = null;
         String  t1h = null;
@@ -98,25 +113,27 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
             JSONObject jsonObj = new JSONObject(jsonString);
             // JSONObject에서 PersonsArray를 get하여 JSONArray에 저장한다.
 
-            JSONObject weatherFinitObj = (JSONObject) jsonObj.get("response");
-            JSONObject weatherFbodyObj = (JSONObject) weatherFinitObj.get("body");
-            JSONObject weatherFitemsObj = (JSONObject) weatherFbodyObj.get("items");
+            JSONObject weatherLFinitObj = (JSONObject) jsonObj.get("response");
+            JSONObject weatherLFbodyObj = (JSONObject) weatherLFinitObj.get("body");
+            JSONObject weatherLFitemsObj = (JSONObject) weatherLFbodyObj.get("items");
 
-            JSONArray  weatherArray = (JSONArray) weatherFitemsObj.get("item");
-            JSONObject weatherFTMN = (JSONObject) weatherArray.get(7);
-            JSONObject weatherFTMX = (JSONObject) weatherArray.get(37);
-
-
-            TMN = weatherFTMN.optString("fcstValue");
-            TMX = weatherFTMX.optString("fcstValue");
+            JSONArray  weatherArray = (JSONArray) weatherLFitemsObj.get("item");
+            JSONObject weatherLFT11 = (JSONObject) weatherArray.get(12);
+            JSONObject weatherLFT12 = (JSONObject) weatherArray.get(13);
+            JSONObject weatherLFT13 = (JSONObject) weatherArray.get(14);
 
 
 
-                    arrayWeatherF[0] = TMN;
-                    arrayWeatherF[1] = TMX;
+            //TMN = weatherLFT11.optString("fcstValue");
+            TMX = weatherLFT11.optString("fcstValue");
 
-                    Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
-                            "최대온도" + arrayWeatherF[1]);
+
+
+            //arrayWeatherF[0] = TMN;
+            arrayWeatherF[1] = TMX;
+
+            Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
+                    "최대온도" + arrayWeatherF[1]);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -127,9 +144,9 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
         return arrayWeatherF;
     }
 
-    public void setFW() {
+    public void setLF() {
 
-        TMN = ForecastWeather.arrayWeatherF[0];
+        //TMN = ForecastWeather.arrayWeatherF[0];
         TMX = ForecastWeather.arrayWeatherF[1];
 
         Log.d("날씨예뽀 set","최저온도" + arrayWeatherF[0] +
