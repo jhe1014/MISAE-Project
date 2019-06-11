@@ -28,6 +28,7 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.CustomVi
     @Override
     public void onBindViewHolder(@NonNull final SharingAdapter.CustomViewHorder customViewHorder, int i) {
         customViewHorder.img_.setImageResource(arrayList.get(i).getImg_());
+        customViewHorder.tv_time.setText(arrayList.get(i).getTv_time());
         customViewHorder.tv_name.setText(arrayList.get(i).getTv_name());
         customViewHorder.tv_pm10.setText(arrayList.get(i).getTv_pm10());
         customViewHorder.tv_pm25.setText(arrayList.get(i).getTv_pm25());
@@ -49,6 +50,7 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.CustomVi
     public class CustomViewHorder extends RecyclerView.ViewHolder {
 
         protected ImageView img_;
+        protected TextView tv_time;
         protected TextView tv_name;
         protected TextView tv_pm10;
         protected TextView tv_pm25;
@@ -56,6 +58,7 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.CustomVi
         public CustomViewHorder(@NonNull View itemView) {
             super(itemView);
             this.img_=(ImageView) itemView.findViewById(R.id.img_);
+            this.tv_time=(TextView) itemView.findViewById(R.id.tv_time);
             this.tv_name=(TextView) itemView.findViewById(R.id.tv_name);
             this.tv_pm10=(TextView) itemView.findViewById(R.id.tv_pm10);
             this.tv_pm25=(TextView) itemView.findViewById(R.id.tv_pm25);
