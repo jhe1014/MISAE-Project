@@ -162,10 +162,19 @@ public class TabFragment1 extends Fragment {
         // 일별 미세먼지 상태 데이터 삽입부
         ArrayList<AirDateData> data3 = new ArrayList<>();
 
+        long nowT1 = System.currentTimeMillis();
+        Date dateT1 = new Date(nowT1);
+        SimpleDateFormat sdfT1 = new SimpleDateFormat("E");
 
-        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
-        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
-        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+        Calendar calT1 = Calendar.getInstance();
+        calT1.setTime(dateT1);
+
+
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
+        calT1.add(Calendar.DATE, 1);
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
+        calT1.add(Calendar.DATE, 1);
+        data3.add(new AirDateData(sdfT1.format(calT1.getTime()), R.drawable.baseline_tag_faces_black_48, "좋음"));
 
 
 

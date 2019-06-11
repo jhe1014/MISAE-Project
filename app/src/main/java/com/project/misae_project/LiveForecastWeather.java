@@ -87,7 +87,7 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
                     buffer.append(str);
                 }
                 receiveMsg = buffer.toString();
-                Log.d("날씨예보 통데이터 : ", receiveMsg);
+                Log.d("날씨초단기예보 통데이터 : ", receiveMsg);
 
                 reader.close();
             } else {
@@ -118,10 +118,10 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
             JSONObject weatherLFbodyObj = (JSONObject) weatherLFinitObj.get("body");
             JSONObject weatherLFitemsObj = (JSONObject) weatherLFbodyObj.get("items");
 
-            JSONArray  weatherArray = (JSONArray) weatherLFitemsObj.get("item");
-            JSONObject weatherLFT11 = (JSONObject) weatherArray.get(12);
-            JSONObject weatherLFT12 = (JSONObject) weatherArray.get(13);
-            JSONObject weatherLFT13 = (JSONObject) weatherArray.get(14);
+            JSONArray  weatherArrayLF = (JSONArray) weatherLFitemsObj.get("item");
+            JSONObject weatherLFT11 = (JSONObject) weatherArrayLF.get(12);
+            JSONObject weatherLFT12 = (JSONObject) weatherArrayLF.get(13);
+            JSONObject weatherLFT13 = (JSONObject) weatherArrayLF.get(14);
 
 
 

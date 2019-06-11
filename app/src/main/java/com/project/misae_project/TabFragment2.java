@@ -63,6 +63,8 @@ public class TabFragment2 extends Fragment {
         // 현재시간 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
         time = (TextView) rootview.findViewById(R.id.time_now2);
 
+
+
         TimeZone tz;
         Date mDate = new Date();
         SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -112,9 +114,10 @@ public class TabFragment2 extends Fragment {
 
         //시간별 예보 반복문
 
-        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
-        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
-        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
+        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[3], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[0]));
+        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[4], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[1]));
+        data1.add(new WeatherTimeData(LiveForecastWeather.arrayWeatherLF[5], R.drawable.sun, LiveForecastWeather.arrayWeatherLF[2]));
+
 
 
 

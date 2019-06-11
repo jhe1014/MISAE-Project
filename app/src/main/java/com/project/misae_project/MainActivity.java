@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             String resultTextLF = new LiveForecastWeather().execute().get();
             new LiveForecastWeather().listjsonParserWeatherLF(resultTextLF);
             new LiveForecastWeather().setLF();
-            Log.d("미세먼지 통데이터",resultTextLF);
+            Log.d("날씨초단기예보 통데이터",resultTextLF);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
