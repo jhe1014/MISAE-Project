@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +39,9 @@ public class TabFragment1 extends Fragment {
     TextView time;
     TextView location;
 
+    TextView con;
+    TextView comment;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +63,13 @@ public class TabFragment1 extends Fragment {
         String time_now = mFormat.format(mDate);
         time.setText(time_now);
 
+        // 맨위 상태 출력 부분
+        con = rootview.findViewById(R.id.big_con1);
+        con.setText("좋음");
+
+        // 코멘트 출력 부분
+        comment = rootview.findViewById(R.id.misae_comment);
+        comment.setText("오늘은 외출해도 좋을 것 같아요!");
 
         //Log.d("주소", MainActivity.addM1+" "+MainActivity.addM2);
 
@@ -96,6 +108,13 @@ public class TabFragment1 extends Fragment {
 
         // 대기 성분 상태 데이터 삽입부
         ArrayList<AirListData> data1 = new ArrayList<>();
+
+        int cImg;
+        String cCon;
+
+        /*if ((LiveAtmosphere.arraysum[1]). >= 0 || LiveAtmosphere.arraysum[1] <= 30) {
+
+        }*/
 
 
         data1.add(new AirListData("미세먼지", R.drawable.baseline_tag_faces_black_48, "좋음", LiveAtmosphere.arraysum[1]));
