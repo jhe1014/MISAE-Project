@@ -53,6 +53,7 @@ public class MaskActivity extends AppCompatActivity {
 
     private void captureCamera() {
         IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setBeepEnabled(false);
         integrator.setCaptureActivity(ScannerActivity.class);
         integrator.initiateScan();
     }

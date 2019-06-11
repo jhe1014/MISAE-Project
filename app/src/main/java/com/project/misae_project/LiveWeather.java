@@ -41,7 +41,7 @@ public class LiveWeather extends AsyncTask<String, String, String> {
     protected String doInBackground(String... strings) {
 
         URL url = null;
-        String serviceKey = "oBOYn4oygtbvPGCZWEQu6Sysiao90s3i%2B%2BCUaxguAZ5Pb1tOHI3uuXTH8gKZOd%2FbMXMRm5%2FxVy8Muac3ToEiXA%3D%3D";
+        String serviceKey = "Pnj%2BWzSwNtHcFfXTFJ%2F3sYzJcWn23IzwKpn%2BBVeycUTgR0dxqTnSdyAXCcuV3jYBVzBh93wlcCyRC49zyf%2Bc2A%3D%3D";
 
 
         long now = System.currentTimeMillis();
@@ -57,7 +57,6 @@ public class LiveWeather extends AsyncTask<String, String, String> {
             url = new URL("http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?ServiceKey="+serviceKey+"&base_date="+getTime+"&base_time=0000&nx="+xLoc+"&ny="+yLoc+"&pageNo=1&numOfRows=4&_type=json");
 
          Log.d("날씨 url",url.toString());
-
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -93,8 +92,6 @@ public class LiveWeather extends AsyncTask<String, String, String> {
 
         arrayWeather = new String[3];
         try{
-
-
 
             // JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
             JSONObject jsonObj = new JSONObject(jsonString);
