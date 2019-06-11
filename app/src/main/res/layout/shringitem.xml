@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="10dp"
         >
 
         <ImageView
@@ -22,20 +23,25 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="time"/>
+            <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="wkatlaks"/>
+                android:text="name"/>
             <TextView
                 android:id="@+id/tv_pm10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="rmfjslRK..."/>
+                android:text="pm10"/>
             <TextView
                 android:id="@+id/tv_pm25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="asdf"/>
+                android:text="pm2.5"/>
 
         </LinearLayout>
     </LinearLayout>

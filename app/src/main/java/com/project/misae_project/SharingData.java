@@ -2,6 +2,7 @@ package com.project.misae_project;
 
 public class SharingData {
     private int img_;
+    private String tv_time;
     private String tv_name;
     private String tv_pm10;
     private String tv_pm25;
@@ -9,8 +10,9 @@ public class SharingData {
     public SharingData(){
 
     }
-    public SharingData(int img_, String tv_name, String tv_pm10, String tv_pm25){
+    public SharingData(int img_, String tv_time, String tv_name, String tv_pm10, String tv_pm25){
         this.img_ = img_;
+        this.tv_time = tv_time;
         this.tv_name = tv_name;
         this.tv_pm10 = tv_pm10;
         this.tv_pm25 = tv_pm25;
@@ -18,6 +20,8 @@ public class SharingData {
 
     public int getImg_() {return img_;}
     public void setImg_(int img_){this.img_ = img_;}
+    public String getTv_time() {return tv_time;}
+    public void setTv_time(String tv_time) {this.tv_time = tv_time;}
     public String getTv_name() {return tv_name;}
     public void setTv_name(String tv_name) {this.tv_name = tv_name;}
     public String getTv_pm10() {return tv_pm10;}

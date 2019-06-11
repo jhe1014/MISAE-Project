@@ -349,7 +349,9 @@ public class SharingSub extends AppCompatActivity {
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if(task.isSuccessful()){
                                     for(QueryDocumentSnapshot document : task.getResult()){
-                                        SharingData subData = new SharingData(R.mipmap.ic_launcher,"time : "+document.getString("time"),
+                                        SharingData subData = new SharingData(R.mipmap.ic_launcher,
+                                                "time : "+document.getString("time"),
+                                                "name : "+document.getString("name"),
                                                 "pm10 : "+document.getString("pm10"),
                                                 "pm2.5 : "+document.getString("pm25"));
                                         arrayList.add(subData);
@@ -357,7 +359,7 @@ public class SharingSub extends AppCompatActivity {
                                     }
                                 }
                                 else {
-                                    SharingData sharingData = new SharingData(R.mipmap.ic_launcher, "아닛!","이럴수가!!","흠흠");
+                                    SharingData sharingData = new SharingData(R.mipmap.ic_launcher, "아닛!","이럴수가!!","흠흠","에바임...");
                                     arrayList.add(sharingData);
                                     sharingAdapter.notifyDataSetChanged();
                                 }
