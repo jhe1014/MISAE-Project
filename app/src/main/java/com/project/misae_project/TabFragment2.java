@@ -111,11 +111,13 @@ public class TabFragment2 extends Fragment {
 
 
         //시간별 예보 반복문
-        int i = 0;
-        while (i < 10) {
-            data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
-            i++;
-        }
+
+        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
+        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
+        data1.add(new WeatherTimeData("시간", R.drawable.sun, "온도"));
+
+
+
 
         weather_time_Adapter.setData(data1);
 
@@ -126,11 +128,11 @@ public class TabFragment2 extends Fragment {
 
 
         //요일별예보 반복문
-        int j = 0;
-        while (j < 10) {
-            data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
-            j++;
-        }
+
+        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
+        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
+        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
+
 
         weather_date_Adapter.setData(data2);
 

@@ -143,11 +143,12 @@ public class TabFragment1 extends Fragment {
         // 일별 미세먼지 상태 데이터 삽입부
         ArrayList<AirDateData> data3 = new ArrayList<>();
 
-        int k = 0;
-        while (k < 10) {
-            data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
-            k++;
-        }
+
+        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+        data3.add(new AirDateData("요일 시간", R.drawable.baseline_tag_faces_black_48, "좋음"));
+
+
 
         air_date_Adapter.setData(data3);
 

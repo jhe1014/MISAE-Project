@@ -30,14 +30,18 @@ import static com.project.misae_project.MainActivity.yLoc;
 public class LiveForecastWeather extends AsyncTask<String, String, String> {
 
     private String str, receiveMsg;
-    public static String[] arrayWeatherF;
+    public static String[] arrayWeatherLF;
 
 
 
     private String  T11 = null;
     private String  T12 = null;
     private String  T13 = null;
-    private String  TMX = null;
+    private String  T11D = null;
+    private String  T12D = null;
+    private String  T13D = null;
+
+
 
     @Override
     protected String doInBackground(String... strings) {
@@ -100,11 +104,8 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
 
     public String[] listjsonParserWeatherLF(String jsonString) {
 
-        String  date = null;
-        String  t1h = null;
-        String  time = null;
 
-        arrayWeatherF = new String[4];
+        arrayWeatherLF = new String[6];
         try{
 
 
@@ -124,16 +125,22 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
 
 
 
-            //TMN = weatherLFT11.optString("fcstValue");
-            TMX = weatherLFT11.optString("fcstValue");
+            T11 = weatherLFT11.optString("fcstValue");
+            T11D = weatherLFT11.optString("fcstTime");
+            T12 = weatherLFT12.optString("fcstValue");
+            T12D = weatherLFT12.optString("fcstTime");
+            T13 = weatherLFT13.optString("fcstValue");
+            T13D = weatherLFT13.optString("fcstTime");
 
 
 
-            //arrayWeatherF[0] = TMN;
-            arrayWeatherF[1] = TMX;
+            arrayWeatherLF[0] = T11;
+            arrayWeatherLF[1] = T12;
+            arrayWeatherLF[2] = T13;
+            arrayWeatherLF[3] = T11D;
+            arrayWeatherLF[4] = T12D;
+            arrayWeatherLF[5] = T13D;
 
-            Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
-                    "최대온도" + arrayWeatherF[1]);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -141,16 +148,16 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
 
 
 
-        return arrayWeatherF;
+        return arrayWeatherLF;
     }
 
     public void setLF() {
-
-        //TMN = ForecastWeather.arrayWeatherF[0];
-        TMX = ForecastWeather.arrayWeatherF[1];
-
-        Log.d("날씨예뽀 set","최저온도" + arrayWeatherF[0] +
-                "최대온도" + arrayWeatherF[1]);
+        arrayWeatherLF[0] = T11;
+        arrayWeatherLF[1] = T12;
+        arrayWeatherLF[2] = T13;
+        arrayWeatherLF[3] = T11D;
+        arrayWeatherLF[4] = T12D;
+        arrayWeatherLF[5] = T13D;
 
 
     }
