@@ -35,14 +35,18 @@ public class TabFragment1 extends Fragment {
     private LinearLayoutManager mLayoutManager;
 
     TextView time;
-
+    TextView location;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.tab_fragment1, container, false);
 
-        // 현재시간 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
+        // 현재위치 출력
+        location = (TextView) rootview.findViewById(R.id.misae_location);
+        location.setText(MainActivity.address);
+
+        // 현재시간 출력 (Runnable 사용하지 않았기 때문에 자동 시간 카운트는 하지 않음)
         time = (TextView) rootview.findViewById(R.id.time_now1);
 
         TimeZone tz;
