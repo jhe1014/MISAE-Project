@@ -121,10 +121,10 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
             TMX2 = weatherFTMX2.optString("fcstValue");
 
 
-                    arrayWeatherF[0] = TMN;
-                    arrayWeatherF[1] = TMX;
-                    arrayWeatherF[2] = TMN2;
-                    arrayWeatherF[3] = TMX2;
+                    arrayWeatherF[0] = TMN+"°C";
+                    arrayWeatherF[1] = TMX+"°C";
+                    arrayWeatherF[2] = TMN2+"°C";
+                    arrayWeatherF[3] = TMX2+"°C";
 
                     Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
                             "최대온도" + arrayWeatherF[1]);

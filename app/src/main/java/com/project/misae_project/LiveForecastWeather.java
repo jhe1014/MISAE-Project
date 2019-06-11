@@ -141,6 +141,7 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
             arrayWeatherLF[4] = T12D;
             arrayWeatherLF[5] = T13D;
 
+            Log.d("날씨 초단기예보", "온도"+ arrayWeatherLF[0]+"날짜"+arrayWeatherLF[3]);
 
 
         } catch (JSONException e) {

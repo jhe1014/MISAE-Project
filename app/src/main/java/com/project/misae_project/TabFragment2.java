@@ -141,11 +141,12 @@ public class TabFragment2 extends Fragment {
 
         //요일별예보 반복문
 
+        calT2.add(Calendar.DATE, 1);
         data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[1], ForecastWeather.arrayWeatherF[0]));
         calT2.add(Calendar.DATE, 1);
         data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[3], ForecastWeather.arrayWeatherF[2]));
-        calT2.add(Calendar.DATE, 1);
-    
+
+
 
 
         weather_date_Adapter.setData(data2);
