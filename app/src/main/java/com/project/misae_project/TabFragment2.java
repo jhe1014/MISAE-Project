@@ -28,6 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -129,12 +130,22 @@ public class TabFragment2 extends Fragment {
         // 일별 날씨 데이터 삽입부
         ArrayList<WeatherDateData> data2 = new ArrayList<>();
 
+        long nowT2 = System.currentTimeMillis();
+        Date dateT2 = new Date(nowT2);
+        SimpleDateFormat sdfT2 = new SimpleDateFormat("E");
+
+        Calendar calT2 = Calendar.getInstance();
+        calT2.setTime(dateT2);
+
+
 
         //요일별예보 반복문
 
-        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
-        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
-        data2.add(new WeatherDateData("요일", R.drawable.sun, "최고온도", "최저온도"));
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[1], ForecastWeather.arrayWeatherF[0]));
+        calT2.add(Calendar.DATE, 1);
+        data2.add(new WeatherDateData(sdfT2.format(calT2.getTime()), R.drawable.sun, ForecastWeather.arrayWeatherF[3], ForecastWeather.arrayWeatherF[2]));
+        calT2.add(Calendar.DATE, 1);
+    
 
 
         weather_date_Adapter.setData(data2);

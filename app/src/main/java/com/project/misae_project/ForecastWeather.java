@@ -36,6 +36,9 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
     private String  TMN = null;
     private String  TMX = null;
 
+    private String  TMN2 = null;
+    private String  TMX2 = null;
+
     @Override
     protected String doInBackground(String... strings) {
 
@@ -104,16 +107,24 @@ public class ForecastWeather extends AsyncTask<String, String, String> {
 
             JSONArray  weatherArray = (JSONArray) weatherFitemsObj.get("item");
             JSONObject weatherFTMN = (JSONObject) weatherArray.get(7);
+            JSONObject weatherFTMN2 = (JSONObject) weatherArray.get(89);
+
             JSONObject weatherFTMX = (JSONObject) weatherArray.get(37);
+            JSONObject weatherFTMX2= (JSONObject) weatherArray.get(119);
+
 
 
             TMN = weatherFTMN.optString("fcstValue");
             TMX = weatherFTMX.optString("fcstValue");
 
+            TMN2 = weatherFTMN2.optString("fcstValue");
+            TMX2 = weatherFTMX2.optString("fcstValue");
 
 
                     arrayWeatherF[0] = TMN;
                     arrayWeatherF[1] = TMX;
+                    arrayWeatherF[2] = TMN2;
+                    arrayWeatherF[3] = TMX2;
 
                     Log.d("날씨예뽀","최저온도" + arrayWeatherF[0] +
                             "최대온도" + arrayWeatherF[1]);

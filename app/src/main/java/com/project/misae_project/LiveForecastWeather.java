@@ -142,6 +142,7 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
             arrayWeatherLF[5] = T13D;
 
 
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
