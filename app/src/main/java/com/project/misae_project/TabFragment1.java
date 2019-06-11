@@ -42,8 +42,8 @@ public class TabFragment1 extends Fragment {
     TextView con;
     TextView comment;
 
-    int cImg = R.drawable.emoji_sogood;
-    String cCon = "";
+    int cImg;
+    String cCon;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -111,13 +111,18 @@ public class TabFragment1 extends Fragment {
         // 대기 성분 상태 데이터 삽입부
         ArrayList<AirListData> data1 = new ArrayList<>();
 
-        if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 0 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 30) {
+        int misae;
+        misae = Integer.parseInt(LiveAtmosphere.arraysum[1]);
+
+        Log.e ("테스트", String.valueOf(misae));
+
+        if (misae >= 0 && misae <= 30) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 31 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 50) {
+        } else if (misae >= 31 && misae <= 50) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Integer.parseInt(LiveAtmosphere.arraysum[1]) >= 51 || Integer.parseInt(LiveAtmosphere.arraysum[1]) <= 100) {
+        } else if (misae >= 51 && misae <= 100) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
@@ -127,13 +132,13 @@ public class TabFragment1 extends Fragment {
 
         data1.add(new AirListData("미세먼지", cImg, cCon, LiveAtmosphere.arraysum[1]+"㎍/㎥"));
 
-        if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 0 || Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 15) {
+        if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 0 && Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 15) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 16 || Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 25) {
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 16 && Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 25) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 26 || Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 50) {
+        } else if (Integer.parseInt(LiveAtmosphere.arraysum[2]) >= 26 && Integer.parseInt(LiveAtmosphere.arraysum[2]) <= 50) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
@@ -143,13 +148,13 @@ public class TabFragment1 extends Fragment {
 
         data1.add(new AirListData("초미세먼지", cImg, cCon, LiveAtmosphere.arraysum[2]+"㎍/㎥"));
 
-        if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0 || Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() <= 0.03) {
+        if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0 && Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() <= 0.03) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0.03 || Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() <= 0.06) {
-            cImg = R.drawable.emoji_soso;
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0.03 && Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() <= 0.06) {
+            cImg= R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0.06 || Integer.parseInt(LiveAtmosphere.arraysum[4]) <= 0.2) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[4]).doubleValue() >= 0.06 && Integer.parseInt(LiveAtmosphere.arraysum[4]) <= 0.2) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
@@ -159,13 +164,13 @@ public class TabFragment1 extends Fragment {
 
         data1.add(new AirListData("이산화질소", cImg, cCon, LiveAtmosphere.arraysum[4]+"ppm"));
 
-        if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0 || Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.03) {
+        if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0 && Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.03) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0.03 || Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.09) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0.03 && Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.09) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0.09 || Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.15) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() >= 0.09 && Double.valueOf(LiveAtmosphere.arraysum[6]).doubleValue() <= 0.15) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
@@ -175,13 +180,13 @@ public class TabFragment1 extends Fragment {
 
         data1.add(new AirListData("오존", cImg, cCon, LiveAtmosphere.arraysum[6]+"ppm"));
 
-        if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 0 || Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 2) {
+        if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 0 && Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 2) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 2 || Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 9) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 2 && Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 9) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 9 || Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 15) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() >= 9 && Double.valueOf(LiveAtmosphere.arraysum[3]).doubleValue() <= 15) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
@@ -191,13 +196,13 @@ public class TabFragment1 extends Fragment {
 
         data1.add(new AirListData("일산화탄소", cImg, cCon, LiveAtmosphere.arraysum[3] +"ppm"));
 
-        if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0 || Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.03) {
+        if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0 && Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.03) {
             cImg = R.drawable.emoji_good;
             cCon = "좋음";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0.03 || Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.06) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0.03 && Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.06) {
             cImg = R.drawable.emoji_soso;
             cCon = "보통";
-        } else if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0.06 || Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.2) {
+        } else if (Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() >= 0.06 && Double.valueOf(LiveAtmosphere.arraysum[5]).doubleValue() <= 0.2) {
             cImg = R.drawable.emoji_bad;
             cCon = "나쁨";
         } else {
