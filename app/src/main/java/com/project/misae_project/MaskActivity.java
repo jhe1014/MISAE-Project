@@ -24,7 +24,6 @@ public class MaskActivity extends AppCompatActivity {
     Button button;
     TextView textView;
     ListView listView;
-    private Object view;
 
 
     @Override
@@ -33,7 +32,8 @@ public class MaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mask);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Button button = (Button) findViewById(R.id.mask_button);
+
+        button = (Button) findViewById(R.id.mask_button);
         textView = (TextView) findViewById(R.id.mask_textView);
         listView = (ListView) findViewById(R.id.mask_ListWiew);
 
@@ -43,15 +43,18 @@ public class MaskActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_black_24);
         setTitle("마스크 검색");
 
-        button.setOnClickListener(new Button.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                captureCamera();
             }
         });
     }
 
 
     private void captureCamera() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(ScannerActivity.class);
+        integrator.initiateScan();
     }
 
 //    protected void onResume(){
