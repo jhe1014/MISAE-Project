@@ -349,11 +349,20 @@ public class SharingSub extends AppCompatActivity {
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if(task.isSuccessful()){
                                     for(QueryDocumentSnapshot document : task.getResult()){
-                                        SharingData subData = new SharingData(R.mipmap.ic_launcher,
+                                        int pm10=Integer.parseInt(document.getString("pm10"));
+                                        int pm25=Integer.parseInt(document.getString("pm25"));
+                                        int img_;
+                                        if(pm10>100||pm25>50){img_=R.drawable.emoji_bad;}
+                                        else if(pm10>50||pm25>25){img_=R.drawable.emoji_sobad;}
+                                        else if(pm10>30||pm25>15){img_=R.drawable.emoji_soso;}
+                                        else if(pm10>0||pm25>0){img_=R.drawable.emoji_sogood;}
+                                        else if(pm10==0&&pm25==0){img_=R.drawable.emoji_good;}
+                                        else{img_=R.mipmap.ic_launcher;}
+                                        SharingData subData = new SharingData(img_,
                                                 "time : "+document.getString("time"),
                                                 "name : "+document.getString("name"),
-                                                "pm10 : "+document.getString("pm10"),
-                                                "pm2.5 : "+document.getString("pm25"));
+                                                "pm10 : "+document.getString("pm10")+"㎍/㎥",
+                                                "pm2.5 : "+document.getString("pm25")+"㎍/㎥");
                                         arrayList.add(subData);
                                         sharingAdapter.notifyDataSetChanged();
                                     }
