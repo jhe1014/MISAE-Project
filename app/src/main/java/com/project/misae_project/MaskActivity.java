@@ -25,6 +25,7 @@ public class MaskActivity extends AppCompatActivity {
     TextView textView;
     ListView listView;
 
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,27 +59,16 @@ public class MaskActivity extends AppCompatActivity {
         integrator.initiateScan();
     }
 
-//    protected void onResume(){
-//        super.onResume();
-//
-//        IntentIntegrator integrator = new IntentIntegrator(this);
-//        integrator.setCaptureActivity(ScannerActivity.class);
-//        integrator.initiateScan();
-//
-//
-//
-//    }
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         Log.d("onActivityResult", "onActivityResult: .");
         if (resultCode == Activity.RESULT_OK) {
             IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
             String re = scanResult.getContents();
-            String message = re;
-            Log.d("onActivityResult", "onActivityResult: ." + re);
-            Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+            message = re;
+            Log.d("onActivityResult", "onActivityResult: ." + message);
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            textView.setText(message);
         }
     }
 
