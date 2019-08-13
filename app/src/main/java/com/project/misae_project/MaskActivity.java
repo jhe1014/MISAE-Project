@@ -24,8 +24,8 @@ public class MaskActivity extends AppCompatActivity {
     Button button;
     TextView textView;
     ListView listView;
-    private Object view;
 
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class MaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mask);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Button button = (Button) findViewById(R.id.mask_button);
+
+        button = (Button) findViewById(R.id.mask_button);
         textView = (TextView) findViewById(R.id.mask_textView);
         listView = (ListView) findViewById(R.id.mask_ListWiew);
 
@@ -43,28 +44,20 @@ public class MaskActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_black_24);
         setTitle("마스크 검색");
 
-        button.setOnClickListener(new Button.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                captureCamera();
             }
         });
     }
 
 
     private void captureCamera() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setBeepEnabled(false);
+        integrator.setCaptureActivity(ScannerActivity.class);
+        integrator.initiateScan();
     }
-
-//    protected void onResume(){
-//        super.onResume();
-//
-//        IntentIntegrator integrator = new IntentIntegrator(this);
-//        integrator.setCaptureActivity(ScannerActivity.class);
-//        integrator.initiateScan();
-//
-//
-//
-//    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -72,9 +65,10 @@ public class MaskActivity extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
             IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
             String re = scanResult.getContents();
-            String message = re;
-            Log.d("onActivityResult", "onActivityResult: ." + re);
-            Toast.makeText(this, re, Toast.LENGTH_LONG).show();
+            message = re;
+            Log.d("onActivityResult", "onActivityResult: ." + message);
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            textView.setText(message);
         }
     }
 

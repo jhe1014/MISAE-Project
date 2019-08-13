@@ -119,14 +119,15 @@ public class TabFragment2 extends Fragment {
 
         //시간별 예보 반복문
 
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[6], R.drawable.sun, ForecastWeather.arrayWeatherFT[0]));
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[7], R.drawable.sun, ForecastWeather.arrayWeatherFT[1]));
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[8], R.drawable.sun, ForecastWeather.arrayWeatherFT[2]));
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[9], R.drawable.sun, ForecastWeather.arrayWeatherFT[3]));
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[10], R.drawable.sun, ForecastWeather.arrayWeatherFT[4]));
-        data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[11], R.drawable.sun, ForecastWeather.arrayWeatherFT[5]));
-
-
+        for (int i = 0; i < 6; i++) {
+            data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[i + 6], R.drawable.sun, ForecastWeather.arrayWeatherFT[i]));
+        }
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[6], R.drawable.sun, ForecastWeather.arrayWeatherFT[0]));
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[7], R.drawable.sun, ForecastWeather.arrayWeatherFT[1]));
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[8], R.drawable.sun, ForecastWeather.arrayWeatherFT[2]));
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[9], R.drawable.sun, ForecastWeather.arrayWeatherFT[3]));
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[10], R.drawable.sun, ForecastWeather.arrayWeatherFT[4]));
+        //data1.add(new WeatherTimeData(ForecastWeather.arrayWeatherFT[11], R.drawable.sun, ForecastWeather.arrayWeatherFT[5]));
 
 
         weather_time_Adapter.setData(data1);

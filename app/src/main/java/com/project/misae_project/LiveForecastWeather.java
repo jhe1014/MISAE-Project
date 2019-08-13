@@ -108,8 +108,6 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
         arrayWeatherLF = new String[6];
         try{
 
-
-
             // JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
             JSONObject jsonObj = new JSONObject(jsonString);
             // JSONObject에서 PersonsArray를 get하여 JSONArray에 저장한다.
@@ -124,14 +122,12 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
             JSONObject weatherLFT13 = (JSONObject) weatherArrayLF.get(14);
 
 
-
             T11 = weatherLFT11.optString("fcstValue");
             T11D = weatherLFT11.optString("fcstTime");
             T12 = weatherLFT12.optString("fcstValue");
             T12D = weatherLFT12.optString("fcstTime");
             T13 = weatherLFT13.optString("fcstValue");
             T13D = weatherLFT13.optString("fcstTime");
-
 
 
             arrayWeatherLF[0] = T11;
@@ -142,7 +138,6 @@ public class LiveForecastWeather extends AsyncTask<String, String, String> {
             arrayWeatherLF[5] = T13D;
 
             Log.d("날씨 초단기예보", "온도"+ arrayWeatherLF[0]+"날짜"+arrayWeatherLF[3]);
-
 
         } catch (JSONException e) {
             e.printStackTrace();
