@@ -85,11 +85,11 @@ public class TabFragment2 extends Fragment {
         weather_max_temp.setText(ForecastWeather.arrayWeatherF[0]);
         weather_min_temp.setText(ForecastWeather.arrayWeatherF[1]);
 
-        try {
-            new JSONTask().execute("http://192.168.21.1:3000/misae_db");
-        } catch (Exception e) {
-
-        }
+//        try {
+//            new JSONTask().execute("http://192.168.21.1:3000/misae_db");
+//        } catch (Exception e) {
+//
+//        }
 
         // 시간별 날씨 목록 (가로 RecyclerView)
         View view1 = inflater.inflate(R.layout.weather_time_item, container, false);
@@ -177,93 +177,93 @@ public class TabFragment2 extends Fragment {
         return rootview;
     }
 
-    // server.js 파일 실행부
-    public class JSONTask extends AsyncTask<String, String, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                HttpURLConnection con = null;
-                BufferedReader reader = null;
-
-                try{
-                    //URL url = new URL("http://192.168.25.16:3000/users");
-                    URL url = new URL(urls[0]);//url을 가져온다.
-                    con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder(); // 데이터 받는곳
-                    con.connect();//연결 수행
-
-                    //입력 스트림 생성
-                    InputStream stream = con.getInputStream();
-
-                    //속도를 향상시키고 부하를 줄이기 위한 버퍼를 선언한다.
-                    reader = new BufferedReader(new InputStreamReader(stream));
-
-                    //line별 스트링을 받기 위한 temp 변수
-                    String line = "";
-
-                    //아래라인은 실제 reader에서 데이터를 가져오는 부분이다. 즉 node.js서버로부터 데이터를 가져온다.
-                    while((line = reader.readLine()) != null){
-                        sb.append(line + "\n");
-                    }
-
-                    //다 가져오면 String 형변환을 수행한다. 이유는 protected String doInBackground(String... urls) 니까
-                    return sb.toString().trim();
-
-                    //아래는 예외처리 부분이다.
-                } catch (MalformedURLException e){
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    //종료가 되면 disconnect메소드를 호출한다.
-                    if(con != null){
-                        con.disconnect();
-                    }
-                    try {
-                        //버퍼를 닫아준다.
-                        if(reader != null){
-                            reader.close();
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }//finally 부분
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        //doInBackground메소드가 끝나면 여기로 와서 텍스트뷰의 값을 바꿔준다.
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            try {
-                myJSON = result;
-                JSONArray jsonObj = new JSONArray(myJSON);
-                JSONObject obj = jsonObj.getJSONObject(0);
-
-                String weather_now_con = obj.getString("con");
-                String weather_now_com = obj.getString("comment");
-                String weather_now_max_temp = obj.getString("max_temp");
-                String weather_now_min_temp = obj.getString("min_temp");
-
-
-                Log.d("날씨 데이터호출확인","주소" + MainActivity.addM1+" "+MainActivity.addM2 +
-                        " 최고 최저"+ ForecastWeather.arrayWeatherF[0] +" " + ForecastWeather.arrayWeatherF[1]);
-                // 상위부분 4가지
-                weather_now.setText(MainActivity.addM1+" "+MainActivity.addM2);
-                weather_now_comment.setText("상태");
-                weather_max_temp.setText(ForecastWeather.arrayWeatherF[0]);
-                weather_min_temp.setText(ForecastWeather.arrayWeatherF[1]);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
+//    // server.js 파일 실행부
+//    public class JSONTask extends AsyncTask<String, String, String> {
+//        @Override
+//        protected String doInBackground(String... urls) {
+//            try {
+//                HttpURLConnection con = null;
+//                BufferedReader reader = null;
+//
+//                try{
+//                    //URL url = new URL("http://192.168.25.16:3000/users");
+//                    URL url = new URL(urls[0]);//url을 가져온다.
+//                    con = (HttpURLConnection) url.openConnection();
+//                    StringBuilder sb = new StringBuilder(); // 데이터 받는곳
+//                    con.connect();//연결 수행
+//
+//                    //입력 스트림 생성
+//                    InputStream stream = con.getInputStream();
+//
+//                    //속도를 향상시키고 부하를 줄이기 위한 버퍼를 선언한다.
+//                    reader = new BufferedReader(new InputStreamReader(stream));
+//
+//                    //line별 스트링을 받기 위한 temp 변수
+//                    String line = "";
+//
+//                    //아래라인은 실제 reader에서 데이터를 가져오는 부분이다. 즉 node.js서버로부터 데이터를 가져온다.
+//                    while((line = reader.readLine()) != null){
+//                        sb.append(line + "\n");
+//                    }
+//
+//                    //다 가져오면 String 형변환을 수행한다. 이유는 protected String doInBackground(String... urls) 니까
+//                    return sb.toString().trim();
+//
+//                    //아래는 예외처리 부분이다.
+//                } catch (MalformedURLException e){
+//                    e.printStackTrace();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    //종료가 되면 disconnect메소드를 호출한다.
+//                    if(con != null){
+//                        con.disconnect();
+//                    }
+//                    try {
+//                        //버퍼를 닫아준다.
+//                        if(reader != null){
+//                            reader.close();
+//                        }
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }//finally 부분
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            return null;
+//        }
+//
+//        //doInBackground메소드가 끝나면 여기로 와서 텍스트뷰의 값을 바꿔준다.
+//        @Override
+//        protected void onPostExecute(String result) {
+//            super.onPostExecute(result);
+//            try {
+//                myJSON = result;
+//                JSONArray jsonObj = new JSONArray(myJSON);
+//                JSONObject obj = jsonObj.getJSONObject(0);
+//
+//                String weather_now_con = obj.getString("con");
+//                String weather_now_com = obj.getString("comment");
+//                String weather_now_max_temp = obj.getString("max_temp");
+//                String weather_now_min_temp = obj.getString("min_temp");
+//
+//
+//                Log.d("날씨 데이터호출확인","주소" + MainActivity.addM1+" "+MainActivity.addM2 +
+//                        " 최고 최저"+ ForecastWeather.arrayWeatherF[0] +" " + ForecastWeather.arrayWeatherF[1]);
+//                // 상위부분 4가지
+//                weather_now.setText(MainActivity.addM1+" "+MainActivity.addM2);
+//                weather_now_comment.setText("상태");
+//                weather_max_temp.setText(ForecastWeather.arrayWeatherF[0]);
+//                weather_min_temp.setText(ForecastWeather.arrayWeatherF[1]);
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }
 }
 
 
