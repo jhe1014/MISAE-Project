@@ -115,13 +115,13 @@ public class MidForecastWeather extends AsyncTask<String, String, String> {
 
             JSONObject weatherLMinitObj = (JSONObject) jsonObj.get("response");
             JSONObject weatherLMbodyObj = (JSONObject) weatherLMinitObj.get("body");
-            //JSONObject weatherLMitemsObj = (JSONObject) weatherLMbodyObj.get("items");
-            //JSONObject weatherLMObjR = (JSONObject) weatherLMitemsObj.get("item");
+            JSONObject weatherLMitemsObj = (JSONObject) weatherLMbodyObj.get("items");
+            JSONObject weatherLMObjR = (JSONObject) weatherLMitemsObj.get("item");
 
 
 
 
-            /*Min3 = weatherLMObjR.optString("taMin3");
+            Min3 = weatherLMObjR.optString("taMin3");
             Min4 = weatherLMObjR.optString("taMin4");
             Min5 = weatherLMObjR.optString("taMin5");
             Min6 = weatherLMObjR.optString("taMin6");
@@ -160,7 +160,6 @@ public class MidForecastWeather extends AsyncTask<String, String, String> {
 
 
             Log.d("날씨중단기",arrayWeatherM[0]+" "+arrayWeatherM[8]);
-*/
 
         } catch (JSONException e) {
             e.printStackTrace();
